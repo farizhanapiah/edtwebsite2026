@@ -1,0 +1,225 @@
+@import "tailwindcss";
+
+/* ─── EDT FONT FACES ────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Dela Gothic One';
+  src: url('/fonts/DelaGothicOne-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('/fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── EDT TAILWIND v4 THEME ─────────────────────────────────────────────── */
+
+@theme {
+  /* Brand colours */
+  --color-edt-blue:  #2D2DFF;
+  --color-edt-black: #0A0A0A;
+  --color-edt-grey:  #8C8C8C;
+  --color-edt-white: #FFFFFF;
+  --color-surface:   #111111;
+
+  /* Font families */
+  --font-display: 'Dela Gothic One', sans-serif;
+  --font-sans:    'Space Grotesk', sans-serif;
+}
+
+/* ─── BASE RESET ────────────────────────────────────────────────────────── */
+
+html,
+body {
+  background-color: #0A0A0A;
+  color: #FFFFFF;
+  font-family: 'Space Grotesk', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── EDT TYPOGRAPHY TOKENS ─────────────────────────────────────────────── */
+
+.display-xl {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: clamp(52px, 9vw, 120px);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.display-lg {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: clamp(38px, 6vw, 80px);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.display-md {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: clamp(26px, 4vw, 56px);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.display-sm {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: clamp(20px, 3vw, 40px);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+/* ─── EDT PIXEL GRID TEXTURE ────────────────────────────────────────────── */
+
+.pixel-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ─── EDT BUTTONS ───────────────────────────────────────────────────────── */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #2D2DFF;
+  color: #FFFFFF;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+  text-decoration: none;
+  border-radius: 0 !important;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background-color: #0000CC;
+  transform: scale(1.01);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: #FFFFFF;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 13px 27px;
+  border: 1px solid #FFFFFF;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+  border-radius: 0 !important;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background-color: #FFFFFF;
+  color: #0A0A0A;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: transparent;
+  color: #2D2DFF;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+  border-radius: 0 !important;
+}
+
+.btn-ghost:hover {
+  opacity: 0.75;
+}
+
+/* ─── EDT BADGE ─────────────────────────────────────────────────────────── */
+
+.edt-badge {
+  display: inline-block;
+  background-color: #2D2DFF;
+  color: #FFFFFF;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 0 !important;
+}
+
+/* ─── EDT WINDOW CHROME ─────────────────────────────────────────────────── */
+
+.window-chrome {
+  border: 1px solid rgba(255,255,255,0.15);
+  background-color: #111111;
+}
+
+.window-bar {
+  background-color: #0A0A0A;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.window-dot {
+  width: 8px;
+  height: 8px;
+  background-color: rgba(255,255,255,0.25);
+  border-radius: 0 !important;
+  flex-shrink: 0;
+}
+
+/* ─── SCROLLBAR ─────────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #2D2DFF; }
+
+/* ─── SELECTION ─────────────────────────────────────────────────────────── */
+
+::selection {
+  background-color: #2D2DFF;
+  color: #FFFFFF;
+}
+
+/* ─── FOCUS ─────────────────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid #2D2DFF;
+  outline-offset: 2px;
+}

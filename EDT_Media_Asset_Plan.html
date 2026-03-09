@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDT Media Asset Plan — 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #fff;
+    padding: 0;
+  }
+
+  .cover {
+    background: #0A0A0A;
+    color: #fff;
+    padding: 60px 50px 50px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cover-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #2D2DFF;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .cover h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .cover-meta {
+    font-size: 10px;
+    color: #8C8C8C;
+    margin-top: 16px;
+  }
+
+  .content {
+    padding: 32px 50px 50px;
+  }
+
+  h2 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0A0A0A;
+    margin: 32px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #2D2DFF;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0A0A0A;
+    margin: 24px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  h4 {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 20px 0 4px;
+  }
+
+  p {
+    margin: 8px 0;
+    color: #333;
+  }
+
+  .slug-tag {
+    display: inline-block;
+    background: #f0f0ff;
+    color: #2D2DFF;
+    font-size: 9.5px;
+    font-family: 'Courier New', monospace;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 20px;
+    font-size: 10px;
+  }
+
+  thead tr {
+    background: #0A0A0A;
+    color: #fff;
+  }
+
+  thead th {
+    padding: 7px 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  tbody tr:nth-child(even) {
+    background: #f8f8f8;
+  }
+
+  tbody tr:hover {
+    background: #f0f0ff;
+  }
+
+  tbody td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #e8e8e8;
+    vertical-align: top;
+    color: #333;
+  }
+
+  tbody td:first-child {
+    color: #888;
+    font-size: 9px;
+    font-weight: 600;
+  }
+
+  .status-cell {
+    color: #aaa;
+    font-size: 11px;
+    text-align: center;
+  }
+
+  code {
+    font-family: 'Courier New', monospace;
+    font-size: 9.5px;
+    background: #f4f4f4;
+    padding: 1px 4px;
+    border-radius: 2px;
+    color: #333;
+  }
+
+  pre {
+    background: #f4f4f4;
+    border-left: 3px solid #2D2DFF;
+    padding: 12px 14px;
+    margin: 10px 0 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 9.5px;
+    line-height: 1.7;
+    overflow-x: auto;
+    color: #333;
+    border-radius: 0 4px 4px 0;
+  }
+
+  blockquote {
+    border-left: 3px solid #2D2DFF;
+    padding: 8px 14px;
+    margin: 10px 0 16px;
+    background: #f0f0ff;
+    color: #444;
+    font-size: 10px;
+  }
+
+  .tier-label {
+    display: inline-block;
+    background: #2D2DFF;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+  }
+
+  .tier2-label {
+    background: #555;
+  }
+
+  .section-intro {
+    font-size: 10px;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  .priority-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+
+  .priority-list li {
+    padding: 6px 10px;
+    border-left: 3px solid #2D2DFF;
+    margin-bottom: 6px;
+    background: #f8f8f8;
+    font-size: 10px;
+    color: #333;
+  }
+
+  .priority-list li strong {
+    color: #0A0A0A;
+  }
+
+  .project-block {
+    page-break-inside: avoid;
+  }
+
+  .context-box {
+    background: #f8f8ff;
+    border: 1px solid #e0e0ff;
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin: 10px 0 20px;
+    font-size: 10.5px;
+    color: #444;
+    line-height: 1.7;
+  }
+
+  .folder-tree {
+    background: #0A0A0A;
+    color: #a0e0a0;
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin: 10px 0 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 9.5px;
+    line-height: 1.8;
+  }
+
+  .dim-table td:nth-child(2) { font-weight: 600; color: #2D2DFF; }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cover { -webkit-print-color-adjust: exact; }
+    h2 { page-break-before: auto; }
+    .project-block { page-break-inside: avoid; }
+    table { page-break-inside: auto; }
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-label">EDT Experience Design Technology</div>
+  <h1>Media Asset Plan<br>Designer Task List — 2026</h1>
+  <div class="cover-meta">
+    Prepared: March 2026 &nbsp;·&nbsp; 20 Projects &nbsp;·&nbsp; Confidential
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- CONTEXT -->
+  <h2>Context</h2>
+  <div class="context-box">
+    The EDT website currently has <strong>no project media assets</strong>. All 20 project cards on <code>/work</code> render as empty dark-blue placeholder boxes, and all 6 full case study pages contain zero images or videos. This document is the complete asset checklist for the designer to produce visuals that will be integrated directly into the live website.
+  </div>
+
+  <!-- DIMENSIONS -->
+  <h2>Recommended Dimensions &amp; Formats</h2>
+  <table class="dim-table">
+    <thead>
+      <tr><th>Asset Type</th><th>Dimensions</th><th>Format</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Thumbnail (work listing card)</td><td>1600 × 1000 px</td><td>JPG, quality 85</td><td>16:10 ratio; displayed at ~640×400 on desktop</td></tr>
+      <tr><td>Hero / Banner (case study top)</td><td>1920 × 1080 px</td><td>JPG, quality 85</td><td>Full-width cinematic; cropped to 16:9</td></tr>
+      <tr><td>Gallery — Landscape</td><td>1600 × 900 px</td><td>JPG, quality 85</td><td>Used in image grids and feature sections</td></tr>
+      <tr><td>Gallery — Portrait</td><td>900 × 1200 px</td><td>JPG, quality 85</td><td>Use sparingly; good for in-space people shots</td></tr>
+      <tr><td>Gallery — Square</td><td>1200 × 1200 px</td><td>JPG, quality 85</td><td>Good for UI screenshots, app close-ups</td></tr>
+      <tr><td>Video — Hero / Embed</td><td>1920 × 1080 px</td><td>MP4 (H.264)</td><td>16:9; keep under 30 MB for web</td></tr>
+      <tr><td>Video — Poster / Thumbnail</td><td>1920 × 1080 px</td><td>JPG</td><td>Static first-frame shown before video plays</td></tr>
+      <tr><td>OG Image (social sharing)</td><td>1200 × 630 px</td><td>JPG</td><td>One per project; text-safe zone: centre 60%</td></tr>
+    </tbody>
+  </table>
+  <blockquote>Export all JPGs at sRGB colour space, progressive encoding. Filenames must be lowercase with hyphens — no spaces, no capitals.</blockquote>
+
+  <!-- NAMING CONVENTION -->
+  <h2>Naming Convention</h2>
+  <pre>/public/images/[project-slug]/[project-slug]_[type]_[##].jpg
+/public/videos/[project-slug]/[project-slug]_[type]_[##].mp4</pre>
+
+  <table>
+    <thead>
+      <tr><th>Token</th><th>Values</th><th>Example</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>[project-slug]</code></td><td>Exact slug from tables below</td><td><code>metahrise</code></td></tr>
+      <tr><td><code>[type]</code></td><td><code>thumb</code>, <code>hero</code>, <code>gallery</code>, <code>og</code>, <code>video</code>, <code>poster</code></td><td><code>gallery</code></td></tr>
+      <tr><td><code>[##]</code></td><td>Two-digit number from <code>01</code>; omit for single assets (thumb, hero, og)</td><td><code>03</code></td></tr>
+      <tr><td><code>[ext]</code></td><td><code>jpg</code>, <code>mp4</code></td><td><code>jpg</code></td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Examples:</strong></p>
+  <pre>metahrise_thumb.jpg
+metahrise_hero.jpg
+metahrise_gallery_01.jpg
+metahrise_gallery_02.jpg
+metahrise_og.jpg
+metahrise_video_01.mp4
+metahrise_poster_01.jpg</pre>
+
+  <!-- TIER 1 -->
+  <h2>Tier 1 — Full Case Study Pages <span style="font-size:10px;font-weight:400;color:#666;">(Priority)</span></h2>
+  <p class="section-intro">These 6 projects have dedicated live pages. They need the full set of assets urgently.</p>
+
+  <!-- MetaHRise -->
+  <div class="project-block">
+    <div class="tier-label">Tier 1 · 01 of 06</div>
+    <h4>MetaHRise — MCMC VR Training</h4>
+    <div class="slug-tag">Slug: metahrise</div>
+    <table>
+      <thead><tr><th>#</th><th>File Name</th><th>Description / Shot Guide</th><th>Dimensions</th><th>Done</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><code>metahrise_thumb.jpg</code></td><td>Best hero shot — participants in VR headsets</td><td>1600 × 1000</td><td class="status-cell">☐</td></tr>
+        <tr><td>2</td><td><code>metahrise_hero.jpg</code></td><td>Wide cinematic — training room or simulation environment</td><td>1920 × 1080</td><td class="status-cell">☐</td></tr>
+        <tr><td>3</td><td><code>metahrise_gallery_01.jpg</code></td><td>Participants wearing VR headsets in training room</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>4</td><td><code>metahrise_gallery_02.jpg</code></td><td>VR simulation environment screenshot</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>5</td><td><code>metahrise_gallery_03.jpg</code></td><td>Group / team photo or Malaysia Book of Records moment</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>6</td><td><code>metahrise_gallery_04.jpg</code></td><td>Close-up of VR headset / hardware</td><td>1200 × 1200</td><td class="status-cell">☐</td></tr>
+        <tr><td>7</td><td><code>metahrise_og.jpg</code></td><td>OG / social share image</td><td>1200 × 630</td><td class="status-cell">☐</td></tr>
+        <tr><td>8</td><td><code>metahrise_video_01.mp4</code></td><td>Highlight reel / experience demo</td><td>1920 × 1080</td><td class="status-cell">○</td></tr>
+        <tr><td>9</td><td><code>metahrise_poster_01.jpg</code></td><td>Video poster frame (if video added)</td><td>1920 × 1080</td><td class="status-cell">○</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CheritAR -->
+  <div class="project-block">
+    <div class="tier-label">Tier 1 · 02 of 06</div>
+    <h4>CheritAR × Think City — AR Heritage</h4>
+    <div class="slug-tag">Slug: cheritar-think-city</div>
+    <table>
+      <thead><tr><th>#</th><th>File Name</th><th>Description / Shot Guide</th><th>Dimensions</th><th>Done</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><code>cheritar-think-city_thumb.jpg</code></td><td>Person scanning AR marker with heritage building visible</td><td>1600 × 1000</td><td class="status-cell">☐</td></tr>
+        <tr><td>2</td><td><code>cheritar-think-city_hero.jpg</code></td><td>Wide shot — KL street with AR overlay on phone screen</td><td>1920 × 1080</td><td class="status-cell">☐</td></tr>
+        <tr><td>3</td><td><code>cheritar-think-city_gallery_01.jpg</code></td><td>Person scanning AR marker on street</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>4</td><td><code>cheritar-think-city_gallery_02.jpg</code></td><td>AR overlay of heritage building on phone screen</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>5</td><td><code>cheritar-think-city_gallery_03.jpg</code></td><td>KL heritage location / environment shot</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>6</td><td><code>cheritar-think-city_gallery_04.jpg</code></td><td>App UI screenshot — portrait crop acceptable</td><td>900 × 1200</td><td class="status-cell">☐</td></tr>
+        <tr><td>7</td><td><code>cheritar-think-city_og.jpg</code></td><td>OG / social share image</td><td>1200 × 630</td><td class="status-cell">☐</td></tr>
+        <tr><td>8</td><td><code>cheritar-think-city_video_01.mp4</code></td><td>AR experience walkthrough</td><td>1920 × 1080</td><td class="status-cell">○</td></tr>
+        <tr><td>9</td><td><code>cheritar-think-city_poster_01.jpg</code></td><td>Video poster frame (if video added)</td><td>1920 × 1080</td><td class="status-cell">○</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ARFestKL -->
+  <div class="project-block">
+    <div class="tier-label">Tier 1 · 03 of 06</div>
+    <h4>ARFestKL — AR Public Art Festival</h4>
+    <div class="slug-tag">Slug: arfestkl</div>
+    <table>
+      <thead><tr><th>#</th><th>File Name</th><th>Description / Shot Guide</th><th>Dimensions</th><th>Done</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><code>arfestkl_thumb.jpg</code></td><td>Vibrant crowd engaging with AR street art</td><td>1600 × 1000</td><td class="status-cell">☐</td></tr>
+        <tr><td>2</td><td><code>arfestkl_hero.jpg</code></td><td>Wide event scene or striking AR mural overlay</td><td>1920 × 1080</td><td class="status-cell">☐</td></tr>
+        <tr><td>3</td><td><code>arfestkl_gallery_01.jpg</code></td><td>Public crowd engaging with AR art</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>4</td><td><code>arfestkl_gallery_02.jpg</code></td><td>AR artwork overlaid on physical mural</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>5</td><td><code>arfestkl_gallery_03.jpg</code></td><td>Artist / artwork close-up</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>6</td><td><code>arfestkl_gallery_04.jpg</code></td><td>Event overview / street scene</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>7</td><td><code>arfestkl_gallery_05.jpg</code></td><td>QR scan moment / user interaction close-up</td><td>1200 × 1200</td><td class="status-cell">☐</td></tr>
+        <tr><td>8</td><td><code>arfestkl_og.jpg</code></td><td>OG / social share image</td><td>1200 × 630</td><td class="status-cell">☐</td></tr>
+        <tr><td>9</td><td><code>arfestkl_video_01.mp4</code></td><td>Festival highlights / AR experience — Recommended</td><td>1920 × 1080</td><td class="status-cell">☐</td></tr>
+        <tr><td>10</td><td><code>arfestkl_poster_01.jpg</code></td><td>Video poster frame</td><td>1920 × 1080</td><td class="status-cell">☐</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- IKAT -->
+  <div class="project-block">
+    <div class="tier-label">Tier 1 · 04 of 06</div>
+    <h4>IKAT Malaysia — Ministry of Textile Immersive Exhibition</h4>
+    <div class="slug-tag">Slug: ikat</div>
+    <table>
+      <thead><tr><th>#</th><th>File Name</th><th>Description / Shot Guide</th><th>Dimensions</th><th>Done</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><code>ikat_thumb.jpg</code></td><td>Dramatic immersive space with textile projections</td><td>1600 × 1000</td><td class="status-cell">☐</td></tr>
+        <tr><td>2</td><td><code>ikat_hero.jpg</code></td><td>Wide cinematic shot of exhibition interior</td><td>1920 × 1080</td><td class="status-cell">☐</td></tr>
+        <tr><td>3</td><td><code>ikat_gallery_01.jpg</code></td><td>Visitors inside immersive exhibition space</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>4</td><td><code>ikat_gallery_02.jpg</code></td><td>Textile projections / display wall close-up</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>5</td><td><code>ikat_gallery_03.jpg</code></td><td>Exhibition overview / full room wide shot</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>6</td><td><code>ikat_gallery_04.jpg</code></td><td>Detail of interactive element or textile artefact</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>7</td><td><code>ikat_gallery_05.jpg</code></td><td>Second or third city venue (different location)</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>8</td><td><code>ikat_og.jpg</code></td><td>OG / social share image</td><td>1200 × 630</td><td class="status-cell">☐</td></tr>
+        <tr><td>9</td><td><code>ikat_video_01.mp4</code></td><td>Exhibition walkthrough / highlights — Recommended</td><td>1920 × 1080</td><td class="status-cell">☐</td></tr>
+        <tr><td>10</td><td><code>ikat_poster_01.jpg</code></td><td>Video poster frame</td><td>1920 × 1080</td><td class="status-cell">☐</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- AirAsia Founders Gallery -->
+  <div class="project-block">
+    <div class="tier-label">Tier 1 · 05 of 06</div>
+    <h4>AirAsia Founders' Gallery — Interactive Installation</h4>
+    <div class="slug-tag">Slug: airasia-founders-gallery</div>
+    <table>
+      <thead><tr><th>#</th><th>File Name</th><th>Description / Shot Guide</th><th>Dimensions</th><th>Done</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><code>airasia-founders-gallery_thumb.jpg</code></td><td>Interactive wall in use — visitor engaging</td><td>1600 × 1000</td><td class="status-cell">☐</td></tr>
+        <tr><td>2</td><td><code>airasia-founders-gallery_hero.jpg</code></td><td>Wide gallery space — cinematic overview</td><td>1920 × 1080</td><td class="status-cell">☐</td></tr>
+        <tr><td>3</td><td><code>airasia-founders-gallery_gallery_01.jpg</code></td><td>Interactive wall in use</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>4</td><td><code>airasia-founders-gallery_gallery_02.jpg</code></td><td>WebAR experience on phone</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>5</td><td><code>airasia-founders-gallery_gallery_03.jpg</code></td><td>AI-generated imagery on display</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>6</td><td><code>airasia-founders-gallery_gallery_04.jpg</code></td><td>Gallery space overview / full room</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>7</td><td><code>airasia-founders-gallery_og.jpg</code></td><td>OG / social share image</td><td>1200 × 630</td><td class="status-cell">☐</td></tr>
+        <tr><td>8</td><td><code>airasia-founders-gallery_video_01.mp4</code></td><td>Gallery experience demo — Recommended</td><td>1920 × 1080</td><td class="status-cell">☐</td></tr>
+        <tr><td>9</td><td><code>airasia-founders-gallery_poster_01.jpg</code></td><td>Video poster frame</td><td>1920 × 1080</td><td class="status-cell">☐</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- New Balance -->
+  <div class="project-block">
+    <div class="tier-label">Tier 1 · 06 of 06</div>
+    <h4>New Balance Grey Day — AR + Immersive Brand Room</h4>
+    <div class="slug-tag">Slug: new-balance-grey-day</div>
+    <table>
+      <thead><tr><th>#</th><th>File Name</th><th>Description / Shot Guide</th><th>Dimensions</th><th>Done</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><code>new-balance-grey-day_thumb.jpg</code></td><td>LED immersive room or AR shoe try-on on phone</td><td>1600 × 1000</td><td class="status-cell">☐</td></tr>
+        <tr><td>2</td><td><code>new-balance-grey-day_hero.jpg</code></td><td>Wide cinematic of LED brand room</td><td>1920 × 1080</td><td class="status-cell">☐</td></tr>
+        <tr><td>3</td><td><code>new-balance-grey-day_gallery_01.jpg</code></td><td>WebAR shoe try-on on phone screen</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>4</td><td><code>new-balance-grey-day_gallery_02.jpg</code></td><td>LED immersive room wide shot</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>5</td><td><code>new-balance-grey-day_gallery_03.jpg</code></td><td>Visitors / people inside brand room</td><td>1600 × 900</td><td class="status-cell">☐</td></tr>
+        <tr><td>6</td><td><code>new-balance-grey-day_gallery_04.jpg</code></td><td>Shoe product close-up in AR</td><td>1200 × 1200</td><td class="status-cell">☐</td></tr>
+        <tr><td>7</td><td><code>new-balance-grey-day_og.jpg</code></td><td>OG / social share image</td><td>1200 × 630</td><td class="status-cell">☐</td></tr>
+        <tr><td>8</td><td><code>new-balance-grey-day_video_01.mp4</code></td><td>AR try-on or room walkthrough — Recommended</td><td>1920 × 1080</td><td class="status-cell">☐</td></tr>
+        <tr><td>9</td><td><code>new-balance-grey-day_poster_01.jpg</code></td><td>Video poster frame</td><td>1920 × 1080</td><td class="status-cell">☐</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TIER 2 -->
+  <h2>Tier 2 — Work Listing Thumbnails <span style="font-size:10px;font-weight:400;color:#666;">(14 Projects)</span></h2>
+  <p class="section-intro">These projects appear on the /work grid but have no dedicated pages yet. Each needs at minimum 1 thumbnail + 2 gallery images for future use.</p>
+  <p style="font-size:9.5px;color:#666;margin-bottom:10px;">Legend: ☐ = Required &nbsp;·&nbsp; ○ = Optional (prepare if assets are available)</p>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Project</th><th>Client</th><th>Slug</th><th>Thumbnail File</th><th>Gallery (2 min)</th><th>Video</th><th>Done</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>01</td><td>AirAsia Supersale</td><td>AirAsia</td><td><code>airasia-supersale</code></td><td><code>airasia-supersale_thumb.jpg</code></td><td><code>_gallery_01–02.jpg</code></td><td><code>_video_01.mp4</code></td><td class="status-cell">☐</td></tr>
+      <tr><td>02</td><td>Sunway Wishing Well</td><td>Sunway</td><td><code>sunway-wishing-well</code></td><td><code>sunway-wishing-well_thumb.jpg</code></td><td><code>_gallery_01–02.jpg</code></td><td><code>_video_01.mp4</code></td><td class="status-cell">☐</td></tr>
+      <tr><td>03</td><td>Hologram Stewardess</td><td>Malaysia Airlines</td><td><code>hologram-stewardess</code></td><td><code>hologram-stewardess_thumb.jpg</code></td><td><code>_gallery_01–02.jpg</code></td><td><code>_video_01.mp4</code></td><td class="status-cell">☐</td></tr>
+      <tr><td>04</td><td>PNB 118 Stories</td><td>PNB</td><td><code>pnb-118-stories</code></td><td><code>pnb-118-stories_thumb.jpg</code></td><td><code>_gallery_01–02.jpg</code></td><td>—</td><td class="status-cell">☐</td></tr>
+      <tr><td>05</td><td>VR Training</td><td>Sime Darby</td><td><code>sime-darby-vr-training</code></td><td><code>sime-darby-vr-training_thumb.jpg</code></td><td><code>_gallery_01–02.jpg</code></td><td><code>_video_01.mp4</code></td><td class="status-cell">☐</td></tr>
+      <tr><td>06</td><td>EEG Brainwave Art</td><td>Prudential SG</td><td><code>eeg-brainwave-art</code></td><td><code>eeg-brainwave-art_thumb.jpg</code></td><td><code>_gallery_01–02.jpg</code></td><td><code>_video_01.mp4</code></td><td class="status-cell">☐</td></tr>
+      <tr><td>07</td><td>VR Putting Challenge</td><td>ECCO</td><td><code>ecco-vr-putting</code></td><td><code>ecco-vr-putting_thumb.jpg</code></td><td><code>_gallery_01–02.jpg</code></td><td><code>_video_01.mp4</code></td><td class="status-cell">☐</td></tr>
+      <tr><td>08</td><td>VR Earthquake Simulation</td><td>Tokyo Fire Dept.</td><td><code>tokyo-vr-earthquake</code></td><td><code>tokyo-vr-earthquake_thumb.jpg</code></td><td><code>_gallery_01–02.jpg</code></td><td><code>_video_01.mp4</code></td><td class="status-cell">☐</td></tr>
+      <tr><td>09</td><td>VR Experience</td><td>Sneakerlah</td><td><code>sneakerlah-vr</code></td><td><code>sneakerlah-vr_thumb.jpg</code></td><td><code>_gallery_01–02.jpg</code></td><td>—</td><td class="status-cell">☐</td></tr>
+      <tr><td>10</td><td>Projection Mapping</td><td>Georgetown Festival</td><td><code>georgetown-projection</code></td><td><code>georgetown-projection_thumb.jpg</code></td><td><code>_gallery_01–02.jpg</code></td><td><code>_video_01.mp4</code></td><td class="status-cell">☐</td></tr>
+      <tr><td>11</td><td>Projection Mapping</td><td>Sarawak Tourism Board</td><td><code>sarawak-projection</code></td><td><code>sarawak-projection_thumb.jpg</code></td><td><code>_gallery_01–03.jpg</code></td><td><code>_video_01.mp4</code></td><td class="status-cell">☐</td></tr>
+      <tr><td>12</td><td>Experimental Digital Stage</td><td>Silau Maya</td><td><code>silau-maya-stage</code></td><td><code>silau-maya-stage_thumb.jpg</code></td><td><code>_gallery_01–02.jpg</code></td><td><code>_video_01.mp4</code></td><td class="status-cell">☐</td></tr>
+      <tr><td>13</td><td>Mobile Legends SupremaSEA</td><td>Moonton / Garena</td><td><code>mobile-legends-supremasea</code></td><td><code>mobile-legends-supremasea_thumb.jpg</code></td><td><code>_gallery_01–02.jpg</code></td><td><code>_video_01.mp4</code></td><td class="status-cell">☐</td></tr>
+      <tr><td>14</td><td>Shayla Sis Shayla</td><td>Safi</td><td><code>shayla-sis-shayla</code></td><td><code>shayla-sis-shayla_thumb.jpg</code></td><td><code>_gallery_01–02.jpg</code></td><td><code>_video_01.mp4</code></td><td class="status-cell">☐</td></tr>
+    </tbody>
+  </table>
+
+  <!-- GLOBAL ASSETS -->
+  <h2>Global Assets</h2>
+  <table>
+    <thead><tr><th>File Name</th><th>Location</th><th>Use</th><th>Dimensions</th><th>Done</th></tr></thead>
+    <tbody>
+      <tr><td><code>og-default.jpg</code></td><td><code>/public/images/og-default.jpg</code></td><td>Default social share for all pages without a custom OG</td><td>1200 × 630</td><td class="status-cell">☐</td></tr>
+    </tbody>
+  </table>
+
+  <!-- FOLDER STRUCTURE -->
+  <h2>Folder Structure to Deliver</h2>
+  <div class="folder-tree">
+/public/<br>
+&nbsp;&nbsp;images/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;og-default.jpg<br>
+&nbsp;&nbsp;&nbsp;&nbsp;metahrise/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metahrise_thumb.jpg<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metahrise_hero.jpg<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metahrise_gallery_01.jpg  …  metahrise_gallery_04.jpg<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metahrise_og.jpg<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cheritar-think-city/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cheritar-think-city_thumb.jpg  …<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arfestkl/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arfestkl_thumb.jpg  …<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ikat/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ikat_thumb.jpg  …<br>
+&nbsp;&nbsp;&nbsp;&nbsp;airasia-founders-gallery/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;airasia-founders-gallery_thumb.jpg  …<br>
+&nbsp;&nbsp;&nbsp;&nbsp;new-balance-grey-day/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new-balance-grey-day_thumb.jpg  …<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[one folder per project slug — Tier 2 same pattern]<br>
+&nbsp;&nbsp;videos/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;metahrise/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metahrise_video_01.mp4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metahrise_poster_01.jpg<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[one folder per project slug]
+  </div>
+
+  <!-- PRIORITY -->
+  <h2>Priority Order for Designer</h2>
+  <ul class="priority-list">
+    <li><strong>1 — Thumbnails first:</strong> All 20 projects need <code>_thumb.jpg</code> — this immediately fills the empty /work grid cards</li>
+    <li><strong>2 — Hero images:</strong> 6 Tier 1 case study pages need <code>_hero.jpg</code> for their banner sections</li>
+    <li><strong>3 — Gallery images:</strong> 6 Tier 1 case study pages, 3–5 landscape gallery images each</li>
+    <li><strong>4 — OG images:</strong> 6 Tier 1 projects + 1 default (used for social sharing and link previews)</li>
+    <li><strong>5 — Videos:</strong> Tier 1 first where available, then Tier 2</li>
+  </ul>
+
+  <p style="margin-top:32px;font-size:9px;color:#aaa;text-align:center;">EDT Experience Design Technology &nbsp;·&nbsp; Media Asset Plan 2026 &nbsp;·&nbsp; Confidential</p>
+
+</div>
+</body>
+</html>
