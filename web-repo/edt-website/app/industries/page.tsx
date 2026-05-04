@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: 'Industries We Serve | EDT Immersive Tech for Corporate, Tourism, Education & More',
   description:
     'EDT creates immersive experiences for corporates, tourism boards, government agencies, educational institutions, retail spaces, and healthcare.',
+  alternates: {
+    canonical: '/industries',
+    languages: { 'en-MY': '/industries', 'x-default': '/industries' },
+  },
 }
 
 const industries = [

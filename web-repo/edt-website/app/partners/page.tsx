@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: "Agency Partners | Strengthen Your Pitch with EDT's XR Capability",
   description:
     "EDT is Malaysia's white-label XR and immersive tech partner for agencies. No hiring, no R&D risk. Pitch, deploy, and deliver unforgettable experiences.",
+  alternates: {
+    canonical: '/partners',
+    languages: { 'en-MY': '/partners', 'x-default': '/partners' },
+  },
 }
 
 export default function PartnersPage() {
@@ -247,7 +251,17 @@ export default function PartnersPage() {
               </div>
             </div>
             <div>
-              <form action="/contact" method="POST" className="space-y-5">
+              <form action="https://formspree.io/f/maqvqkpq" method="POST" className="space-y-5">
+                <input type="hidden" name="_subject" value="New partner enquiry — EDT" />
+                <input type="hidden" name="_next" value="https://weareedt.com/thank-you?type=partner" />
+                <input
+                  type="text"
+                  name="_gotcha"
+                  style={{ display: 'none' }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
                 <div>
                   <label htmlFor="agency-name" className="block text-edt-grey text-sm uppercase tracking-widest mb-2">
                     Agency Name *

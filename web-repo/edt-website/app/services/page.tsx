@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: 'Services | AR VR MR Development, AI Avatars & Immersive Events Malaysia',
   description:
     'Full-spectrum immersive technology services: AR/VR/MR development, AI holograms, virtual production, projection mapping and interactive installations.',
+  alternates: {
+    canonical: '/services',
+    languages: { 'en-MY': '/services', 'x-default': '/services' },
+  },
 }
 
 const services = [

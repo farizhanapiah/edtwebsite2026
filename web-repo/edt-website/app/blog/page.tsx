@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: 'Blog | Immersive Tech Insights, AR VR News & Case Studies | EDT',
   description:
     "Explore EDT\'s blog for insights on AR, VR, MR, AI avatars, virtual production, and immersive experience design in Malaysia and Southeast Asia.",
+  alternates: {
+    canonical: '/blog',
+    languages: { 'en-MY': '/blog', 'x-default': '/blog' },
+  },
 }
 
 const posts = [
@@ -216,7 +220,17 @@ export default function BlogPage() {
               </p>
             </div>
             <div>
-              <form action="#" method="POST" className="flex gap-0">
+              <form action="https://formspree.io/f/xqenejyp" method="POST" className="flex gap-0">
+                <input type="hidden" name="_subject" value="New newsletter subscriber — EDT" />
+                <input type="hidden" name="_next" value="https://weareedt.com/thank-you?type=newsletter" />
+                <input
+                  type="text"
+                  name="_gotcha"
+                  style={{ display: 'none' }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
                 <input
                   type="email"
                   name="email"

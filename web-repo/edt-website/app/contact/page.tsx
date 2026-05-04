@@ -5,51 +5,68 @@ export const metadata: Metadata = {
   title: 'Contact EDT | Get a Quote for AR VR & Immersive Experiences Malaysia',
   description:
     'Ready to build something unforgettable? Contact EDT to request a demo, get a quote, or discuss your next immersive project in Malaysia or Southeast Asia.',
+  alternates: {
+    canonical: '/contact',
+    languages: { 'en-MY': '/contact', 'x-default': '/contact' },
+  },
+}
+
+const contactBreadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://weareedt.com' },
+    { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://weareedt.com/contact' },
+  ],
+}
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://weareedt.com/#localbusiness',
+  name: 'Experiential Design Team',
+  alternateName: 'EDT',
+  legalName: 'Adticles Sdn Bhd',
+  description:
+    'Malaysia immersive tech studio delivering AR, VR, MR, AI avatar and interactive installation experiences.',
+  url: 'https://weareedt.com',
+  telephone: '+60364115361',
+  email: 'hello@weareedt.com',
+  image: 'https://weareedt.com/favicon/web-app-manifest-512x512.png',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'A-3-13 Centrio Pantai Hillpark, Jalan Pantai Murni',
+    addressLocality: 'Kuala Lumpur',
+    addressRegion: 'WP Kuala Lumpur',
+    postalCode: '59200',
+    addressCountry: 'MY',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: 3.1390, longitude: 101.6869 },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00',
+    },
+  ],
+  areaServed: ['Malaysia', 'Singapore', 'Qatar', 'Hong Kong'],
+  sameAs: [
+    'https://www.instagram.com/edtmy',
+    'https://www.linkedin.com/company/edtmy',
+  ],
 }
 
 export default function ContactPage() {
   return (
     <>
-      {/* LOCAL BUSINESS SCHEMA */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'LocalBusiness',
-            name: 'EDT — Experiential Design Team',
-            description:
-              'Malaysia immersive tech studio delivering AR, VR, AI, and interactive installation experiences.',
-            url: 'https://www.edtmy.com',
-            telephone: '+60-11-1234-5678',
-            email: 'hello@edtmy.com',
-            address: {
-              '@type': 'PostalAddress',
-              streetAddress: 'Kuala Lumpur',
-              addressLocality: 'Kuala Lumpur',
-              addressRegion: 'WP Kuala Lumpur',
-              postalCode: '50000',
-              addressCountry: 'MY',
-            },
-            geo: {
-              '@type': 'GeoCoordinates',
-              latitude: 3.1390,
-              longitude: 101.6869,
-            },
-            openingHoursSpecification: [
-              {
-                '@type': 'OpeningHoursSpecification',
-                dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-                opens: '09:00',
-                closes: '18:00',
-              },
-            ],
-            sameAs: [
-              'https://www.instagram.com/edtmy',
-              'https://www.linkedin.com/company/edtmy',
-            ],
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactBreadcrumbSchema) }}
       />
 
       <main className="bg-edt-black text-white">
@@ -74,7 +91,18 @@ export default function ContactPage() {
 
               {/* FORM */}
               <div className="lg:col-span-2">
-                <form action="#" method="POST" className="space-y-6">
+                <form action="https://formspree.io/f/mwvyvznj" method="POST" className="space-y-6">
+
+                  <input type="hidden" name="_subject" value="New project enquiry — EDT" />
+                  <input type="hidden" name="_next" value="https://weareedt.com/thank-you?type=contact" />
+                  <input
+                    type="text"
+                    name="_gotcha"
+                    style={{ display: 'none' }}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                  />
 
                   {/* Name + Company */}
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

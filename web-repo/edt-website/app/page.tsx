@@ -1,20 +1,28 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
+import HeroShowreel from '@/components/HeroShowreel'
 
 export const metadata: Metadata = {
   title: 'EDT | Immersive AR VR MR Experiences & AI Avatars Malaysia',
   description:
     "Malaysia's leading experiential technology studio. AR, VR, MR, AI holograms and immersive activations for brands, events, tourism and government across Southeast Asia.",
+  alternates: {
+    canonical: '/',
+    languages: { 'en-MY': '/', 'x-default': '/' },
+  },
 }
 
 // ─── Schema Markup ──────────────────────────────────────────────────────────
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': 'https://weareedt.com/#organization',
   name: 'Experiential Design Team',
   alternateName: 'EDT',
   legalName: 'Adticles Sdn Bhd',
   url: 'https://weareedt.com',
+  logo: 'https://weareedt.com/favicon/web-app-manifest-512x512.png',
   telephone: '+60364115361',
   email: 'hello@weareedt.com',
   address: {
@@ -33,74 +41,126 @@ const organizationSchema = {
     'Projection Mapping',
     'Immersive Events',
   ],
+  sameAs: [
+    'https://www.instagram.com/edtmy',
+    'https://www.linkedin.com/company/edtmy',
+  ],
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://weareedt.com/#website',
+  url: 'https://weareedt.com',
+  name: 'Experiential Design Team',
+  description:
+    "Malaysia's leading experiential technology studio. AR, VR, MR, AI holograms and immersive activations.",
+  inLanguage: 'en-MY',
+  publisher: { '@id': 'https://weareedt.com/#organization' },
 }
 
 // ─── Data ────────────────────────────────────────────────────────────────────
+
+const painPointIconClass = 'w-7 h-7 text-edt-blue mb-5'
 
 const painPoints = [
   {
     num: '01',
     title: 'Abstract ideas are hard to understand',
     body: 'We turn complex data, policies, and concepts into immersive experiences people can see, feel, and remember.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={painPointIconClass} aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+      </svg>
+    ),
   },
   {
     num: '02',
     title: 'Digital spaces feel flat and forgettable',
     body: 'EDT uses AR, VR, MR, and interactive media to dramatically increase attention, participation, and dwell time.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={painPointIconClass} aria-hidden="true">
+        <polygon points="12,3 21,12 12,21 3,12" />
+        <circle cx="12" cy="12" r="3" />
+      </svg>
+    ),
   },
   {
     num: '03',
     title: 'Technology feels intimidating',
     body: 'We design "human-first" interfaces that make advanced tech intuitive and playful for any audience.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={painPointIconClass} aria-hidden="true">
+        <polygon points="12,3 21,8.5 21,15.5 12,21 3,15.5 3,8.5" />
+      </svg>
+    ),
   },
   {
     num: '04',
     title: 'Experiences lack emotional relevance',
     body: 'EDT creates experiential storytelling that differentiates beyond ads — through installations, simulations, and lived experiences.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={painPointIconClass} aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <polygon points="12,5 15,12 12,19 9,12" fill="currentColor" />
+      </svg>
+    ),
   },
   {
     num: '05',
     title: "Brands can't stand out",
     body: 'We localise technology with Malaysian and SEA cultural context, language, and narratives to create emotional resonance.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={painPointIconClass} aria-hidden="true">
+        <polygon points="12,3 14.5,9.5 21,10 16,14.5 17.5,21 12,17.5 6.5,21 8,14.5 3,10 9.5,9.5" />
+      </svg>
+    ),
   },
 ]
 
 const services = [
   {
-    icon: '⬡',
+    icon: '/icons/services/ar-vr-mr-development.svg',
     title: 'AR / VR / MR Development',
     desc: 'Cross-platform immersive experiences from WebAR to full VR simulations',
     href: '/services/ar-vr-mr-development',
+    video: '/videos/services/ar-vr-mr-development.webm',
   },
   {
-    icon: '⬡',
+    icon: '/icons/services/ai-avatars-holograms.svg',
     title: 'AI Avatars & Holograms',
     desc: 'Intelligent holographic avatars that know your business',
     href: '/services/ai-avatars-holograms',
+    video: '/videos/services/ai-avatars-holograms.webm',
   },
   {
-    icon: '⬡',
+    icon: '/icons/services/virtual-production.svg',
     title: 'Virtual Production',
     desc: 'Unreal Engine environments for live streaming and branded content',
     href: '/services/virtual-production',
+    video: '/videos/services/virtual-production.webm',
   },
   {
-    icon: '⬡',
+    icon: '/icons/services/interactive-installations.svg',
     title: 'Interactive Installations',
     desc: 'LED walls, touch displays, and immersive rooms that respond to people',
     href: '/services/interactive-installations',
+    video: '/videos/services/interactive-installations.webm',
   },
   {
-    icon: '⬡',
+    icon: '/icons/services/projection-mapping.svg',
     title: 'Projection Mapping',
     desc: 'Any surface becomes a canvas',
     href: '/services/projection-mapping',
+    video: '/videos/services/projection-mapping.webm',
   },
   {
-    icon: '⬡',
+    icon: '/icons/services/immersive-events.svg',
     title: 'Immersive Events',
     desc: 'End-to-end experiential event production — pitch to post-event',
     href: '/services/immersive-events',
+    video: '/videos/services/immersive-events.webm',
   },
 ]
 
@@ -110,50 +170,60 @@ const products = [
     title: 'RiaReality',
     desc: 'MR platform for physical spaces. Games, education, real estate, heritage.',
     href: '/products/riaReality',
+    image: '/images/products/riareality_thumb.jpg',
   },
   {
     badge: 'AI Product',
     title: 'Hoomans.ai',
     desc: 'AI-powered holographic avatars with RAG knowledge and TTS voice.',
     href: '/products/hoomans-ai',
+    image: '/images/products/hoomans-ai_thumb.jpg',
   },
   {
     badge: 'AI Photobooth',
     title: 'MimpiLab',
     desc: 'AI photobooth with 100% brand-controllable themed photos.',
     href: '/products/mimpilab',
+    image: '/images/products/mimpilab_thumb.jpg',
   },
   {
     badge: 'AR Heritage',
     title: 'CheritAR',
     desc: 'AR avatars that give historical landmarks a voice.',
     href: '/products/cheritar',
+    image: '/images/cheritar-think-city/cheritar-think-city_hero.jpg',
   },
   {
     badge: 'VR Wellness',
     title: 'WayangMind',
     desc: 'VR mental wellness with AI-personalized guided sessions.',
     href: '/products/wayangmind',
+    image: '/images/products/wayangmind_thumb.jpg',
   },
   {
     badge: 'Virtual Production',
     title: 'ARVENA',
     desc: 'Virtual production platform replacing physical sets with Unreal Engine.',
     href: '/products/arvena',
+    image: '/images/products/arvena_thumb.jpg',
   },
 ]
 
 const clients = [
-  'Petronas', 'AirAsia', 'Astro', 'Sunway', 'Malaysia Airlines',
-  'PNB', 'MCMC', 'Sime Darby', 'New Balance', 'Prudential',
-  'Sarawak Tourism Board', 'ECCO', 'Vans', 'CelcomDigi', 'Petrosains', 'Think City',
-]
-
-const stats = [
-  { number: '52,417', label: 'AR Impressions', note: 'ARFestKL' },
-  { number: '93%', label: 'Client Satisfaction Rate', note: '' },
-  { number: '40%', label: 'Efficiency Improvement', note: 'MetaHRise' },
-  { number: '12+', label: 'Countries Reached', note: 'CheritAR' },
+  { name: 'Petronas',          src: '/images/clients/client_petronas.png' },
+  { name: 'AirAsia',           src: '/images/clients/client_airasia.png' },
+  { name: 'Malaysia Airlines', src: '/images/clients/client_malaysiaairlines.png' },
+  { name: 'Sunway',            src: '/images/clients/client_sunway.png' },
+  { name: 'MCMC',              src: '/images/clients/clients_mcmc.png' },
+  { name: 'New Balance',       src: '/images/clients/clients_newbalance.png' },
+  { name: 'Prudential',        src: '/images/clients/clients_prudential.png' },
+  { name: 'Vans',              src: '/images/clients/clients_vans.png' },
+  { name: 'Think City',        src: '/images/clients/clients_thinkcity.png' },
+  { name: 'Accenture',         src: '/images/clients/clients_accenture.png' },
+  { name: 'CIMB Bank',         src: '/images/clients/clients_cimbbank.png' },
+  { name: 'Maybank',           src: '/images/clients/clients_maybank.png' },
+  { name: 'Public Bank',       src: '/images/clients/clients_publicbank.png' },
+  { name: 'SAFI',              src: '/images/clients/clients_safi.png' },
 ]
 
 const caseStudies = [
@@ -163,7 +233,7 @@ const caseStudies = [
     title: 'VR onboarding that set a Malaysian record.',
     stats: ['93% satisfaction', '40% efficiency gain', '145 employees', 'Guinness Record 2024'],
     href: '/work/metahrise',
-    color: '#2D2DFF',
+    image: '/images/metahrise/metahrise_thumb.jpg',
   },
   {
     badge: 'AR Event',
@@ -171,7 +241,7 @@ const caseStudies = [
     title: 'Downtown KL transformed into a 30-point AR playground.',
     stats: ['52,417 AR impressions', '12,040 QR scans', '42 artists', '35 artworks'],
     href: '/work/arfestkl',
-    color: '#111111',
+    image: '/images/arfestkl/arfestkl_thumb.jpg',
   },
   {
     badge: 'Immersive Exhibition',
@@ -179,14 +249,8 @@ const caseStudies = [
     title: 'Textile heritage that generated RM 3.2M in media value.',
     stats: ['5,822 visitors', 'RM 3.2M media value', '382,720 social reach', '3 cities'],
     href: '/work/ikat',
-    color: '#111111',
+    image: '/images/ikat/ikat_thumb.jpg',
   },
-]
-
-const awards = [
-  { icon: '▲', title: 'Management Initiative of the Year', body: 'Malaysia · 2025' },
-  { icon: '▲', title: 'Excellence Awards', body: 'Malaysia · 2024' },
-  { icon: '▲', title: 'Malaysia Book of Records', body: '2024' },
 ]
 
 // ─── Component ───────────────────────────────────────────────────────────────
@@ -198,50 +262,13 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
 
       {/* ── SECTION 1: HERO ─────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-edt-black pixel-grid">
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-edt-black/80 z-10" />
-
-        {/* Decorative blue line */}
-        <div className="absolute left-0 top-0 bottom-0 w-px bg-edt-blue/30 z-10" />
-
-        <div className="relative z-20 max-w-[1440px] mx-auto px-6 lg:px-20 py-32 lg:py-48">
-          {/* Eyebrow */}
-          <div className="mb-8">
-            <span className="inline-block border border-edt-blue/40 px-4 py-2 font-sans text-[11px] font-semibold tracking-[0.14em] uppercase text-edt-blue">
-              Kuala Lumpur · Southeast Asia · Beyond
-            </span>
-          </div>
-
-          {/* H1 */}
-          <h1 className="display-xl text-white max-w-[900px] mb-8">
-            We Build<br />
-            Experiences<br />
-            That Can&apos;t Be<br />
-            Ignored.
-          </h1>
-
-          {/* Subheadline */}
-          <p className="font-sans text-[16px] lg:text-[18px] text-edt-grey mb-12 max-w-[600px] leading-relaxed tracking-wider uppercase">
-            AR · VR · MR · AI Avatars · Projection Mapping · Immersive Installations
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-wrap items-center gap-4">
-            <Link href="/work" className="btn-primary">
-              See Our Work →
-            </Link>
-            <Link href="/contact" className="btn-secondary">
-              Get a Quote
-            </Link>
-          </div>
-        </div>
-
-        {/* Bottom rule */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10 z-20" />
-      </section>
+      <HeroShowreel />
 
       {/* ── SECTION 2: PROBLEMS WE SOLVE ────────────────────────────── */}
       <section className="bg-edt-black py-24 lg:py-32 border-t border-white/10">
@@ -250,17 +277,18 @@ export default function HomePage() {
             <span className="font-sans text-[11px] font-semibold tracking-[0.12em] uppercase text-edt-blue">
               Why EDT
             </span>
-            <h2 className="display-md text-white mt-4 max-w-[700px]">
-              The gap between what brands want and what audiences feel.
+            <h2 className="display-md text-white mt-4 max-w-[900px]">
+              Bridging the gap between what brands want and what audiences feel.
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px bg-white/10">
             {painPoints.map((p) => (
               <div key={p.num} className="bg-edt-black p-8 lg:p-10">
                 <span className="font-sans text-[11px] font-semibold tracking-widest text-edt-blue/60 mb-4 block">
                   {p.num}
                 </span>
+                {p.icon}
                 <h3 className="font-sans text-[17px] font-semibold text-white mb-3 leading-snug">
                   {p.title}
                 </h3>
@@ -269,8 +297,6 @@ export default function HomePage() {
                 </p>
               </div>
             ))}
-            {/* Filler cell for grid balance */}
-            <div className="bg-edt-black hidden lg:block" />
           </div>
         </div>
       </section>
@@ -297,18 +323,32 @@ export default function HomePage() {
               <Link
                 key={s.href}
                 href={s.href}
-                className="bg-edt-black p-8 lg:p-10 group hover:bg-surface transition-colors block"
+                className="bg-edt-black group hover:bg-surface transition-colors block overflow-hidden"
               >
-                <div className="w-10 h-10 border border-edt-blue/30 flex items-center justify-center text-edt-blue text-lg mb-5 group-hover:border-edt-blue transition-colors">
-                  ◈
+                <div className="relative h-40 overflow-hidden bg-edt-blue/10">
+                  <video
+                    src={s.video}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-label={s.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
-                <h3 className="font-sans text-[16px] font-semibold text-white mb-2">
-                  {s.title}
-                </h3>
-                <p className="font-sans text-[13px] text-edt-grey leading-relaxed mb-4">
-                  {s.desc}
-                </p>
-                <span className="btn-ghost text-[12px]">Learn more →</span>
+                <div className="p-8 lg:p-10">
+                  <div className="w-10 h-10 border border-edt-blue/30 flex items-center justify-center mb-5 group-hover:border-edt-blue transition-colors">
+                    <img src={s.icon} alt="" aria-hidden="true" className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-sans text-[16px] font-semibold text-white mb-2">
+                    {s.title}
+                  </h3>
+                  <p className="font-sans text-[13px] text-edt-grey leading-relaxed mb-4">
+                    {s.desc}
+                  </p>
+                  <span className="btn-ghost text-[12px]">Learn more →</span>
+                </div>
               </Link>
             ))}
           </div>
@@ -338,54 +378,55 @@ export default function HomePage() {
               <Link
                 key={p.href}
                 href={p.href}
-                className="group border border-edt-blue/20 hover:border-edt-blue bg-edt-black p-6 lg:p-8 flex flex-col gap-4 transition-colors"
+                className="group border border-edt-blue/20 hover:border-edt-blue bg-edt-black flex flex-col transition-colors overflow-hidden"
               >
-                <span className="edt-badge self-start">{p.badge}</span>
-                <h3 className="display-sm text-white">{p.title}</h3>
-                <p className="font-sans text-[13px] text-edt-grey leading-relaxed flex-1">
-                  {p.desc}
-                </p>
-                <span className="btn-ghost text-[12px]">Learn more →</span>
+                <div className="relative h-44 overflow-hidden bg-edt-blue/10">
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover brightness-50 saturate-50 group-hover:brightness-100 group-hover:saturate-100 group-hover:scale-105 transition-all duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-edt-black/70 to-transparent" />
+                  <span className="edt-badge absolute top-4 left-4 z-10">{p.badge}</span>
+                </div>
+                <div className="p-6 lg:p-8 flex flex-col gap-4 flex-1">
+                  <h3 className="display-sm text-white">{p.title}</h3>
+                  <p className="font-sans text-[13px] text-edt-grey leading-relaxed flex-1">
+                    {p.desc}
+                  </p>
+                  <span className="btn-ghost text-[12px]">Learn more →</span>
+                </div>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── SECTION 5: PROOF — CLIENTS & STATS ──────────────────────── */}
-      <section className="bg-white py-16 lg:py-20 border-t border-black/10">
+      {/* ── SECTION 5: PROOF — CLIENT LOGO TICKER ───────────────────── */}
+      <section className="bg-white py-8 lg:py-10 border-t border-black/10 overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
           <p className="font-sans text-[11px] font-semibold tracking-[0.12em] uppercase text-edt-blue mb-10 text-center">
             Trusted by Malaysia&apos;s most recognised brands
           </p>
+        </div>
 
-          {/* Client logos (text representation until images are added) */}
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 mb-16">
-            {clients.map((c) => (
-              <span key={c} className="font-sans text-[13px] font-semibold text-edt-black/50 tracking-wider uppercase">
-                {c}
-              </span>
-            ))}
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-black/10">
-            {stats.map((s) => (
-              <div key={s.label} className="bg-white p-8 lg:p-10 text-center">
-                <div
-                  className="font-display text-edt-black leading-none mb-2"
-                  style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}
-                >
-                  {s.number}
-                </div>
-                <p className="font-sans text-[13px] font-semibold text-edt-black/60 uppercase tracking-wider">
-                  {s.label}
-                </p>
-                {s.note && (
-                  <p className="font-sans text-[11px] text-edt-black/30 mt-1 uppercase tracking-wider">
-                    {s.note}
-                  </p>
-                )}
+        <div className="relative w-full overflow-hidden">
+          <div className="marquee-track flex flex-nowrap items-center w-max">
+            {[...clients, ...clients].map((c, i) => (
+              <div
+                key={`${c.name}-${i}`}
+                className="flex items-center justify-center shrink-0 px-8 lg:px-[45px]"
+                aria-hidden={i >= clients.length ? true : undefined}
+              >
+                <Image
+                  src={c.src}
+                  alt={c.name}
+                  width={160}
+                  height={48}
+                  className="h-10 lg:h-12 w-auto object-contain"
+                  unoptimized
+                />
               </div>
             ))}
           </div>
@@ -426,13 +467,16 @@ export default function HomePage() {
                   </span>
                 </div>
 
-                {/* Placeholder image area */}
-                <div
-                  className="h-48 lg:h-56 relative overflow-hidden"
-                  style={{ backgroundColor: cs.color }}
-                >
-                  <div className="absolute inset-0 pixel-grid" />
-                  <div className="absolute bottom-4 left-4">
+                {/* Thumbnail */}
+                <div className="h-48 lg:h-56 relative overflow-hidden bg-edt-blue/10">
+                  <img
+                    src={cs.image}
+                    alt={`${cs.client} — ${cs.title}`}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-edt-black/60 to-transparent" />
+                  <div className="absolute bottom-4 left-4 z-10">
                     <span className="edt-badge">{cs.badge}</span>
                   </div>
                 </div>
@@ -459,25 +503,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SECTION 7: RECOGNITION ──────────────────────────────────── */}
-      <section className="bg-surface py-20 border-t border-white/10">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
-          <p className="font-sans text-[11px] font-semibold tracking-[0.12em] uppercase text-edt-blue mb-12 text-center">
-            Award-winning, record-breaking.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/10">
-            {awards.map((a) => (
-              <div key={a.title} className="bg-surface p-8 lg:p-10 flex flex-col gap-3">
-                <span className="text-edt-blue text-xl">{a.icon}</span>
-                <h3 className="font-sans text-[16px] font-semibold text-white">{a.title}</h3>
-                <p className="font-sans text-[13px] text-edt-grey">{a.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 8: PARTNER CTA ──────────────────────────────────── */}
+      {/* ── SECTION 7: PARTNER CTA ──────────────────────────────────── */}
       <section className="bg-edt-blue py-20 lg:py-24">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-20 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
           <div className="max-w-[600px]">
@@ -496,7 +522,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SECTION 9: FINAL CTA / LEAD FORM ───────────────────────── */}
+      {/* ── SECTION 8: FINAL CTA / LEAD FORM ───────────────────────── */}
       <section className="bg-edt-black py-24 lg:py-32 border-t border-white/10 pixel-grid">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
           <div className="max-w-[700px] mx-auto text-center mb-12">
@@ -520,7 +546,17 @@ export default function HomePage() {
 // ─── Inline Lead Form (server-rendered shell, action via /contact) ────────────
 function ContactForm() {
   return (
-    <form action="/contact" method="GET" className="flex flex-col gap-4">
+    <form action="https://formspree.io/f/xjglgzav" method="POST" className="flex flex-col gap-4">
+      <input type="hidden" name="_subject" value="New homepage lead — EDT" />
+      <input type="hidden" name="_next" value="https://weareedt.com/thank-you?type=lead" />
+      <input
+        type="text"
+        name="_gotcha"
+        style={{ display: 'none' }}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+      />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <input
           name="name"
@@ -561,9 +597,9 @@ function ContactForm() {
         placeholder="Message (optional)"
         className="bg-surface border border-white/15 text-white font-sans text-[14px] px-5 py-4 placeholder:text-edt-grey/50 focus:border-edt-blue focus:outline-none transition-colors resize-none"
       />
-      <Link href="/contact" className="btn-primary self-start">
+      <button type="submit" className="btn-primary self-start">
         Let&apos;s Talk →
-      </Link>
+      </button>
     </form>
   )
 }

@@ -1,15 +1,68 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import YouTubeEmbed from '@/components/YouTubeEmbed'
 
 export const metadata: Metadata = {
   title: 'CheritAR × Think City | AR Heritage Case Study | EDT',
   description:
     "How EDT and Think City brought Kuala Lumpur's heritage buildings to life with AI-powered AR avatars, reaching tourists from 12+ countries.",
+  alternates: {
+    canonical: '/work/cheritar-think-city',
+    languages: { 'en-MY': '/work/cheritar-think-city', 'x-default': '/work/cheritar-think-city' },
+  },
 }
+
+const URL_BASE = 'https://weareedt.com'
+const PAGE_URL = `${URL_BASE}/work/cheritar-think-city`
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: URL_BASE },
+    { '@type': 'ListItem', position: 2, name: 'Work', item: `${URL_BASE}/work` },
+    { '@type': 'ListItem', position: 3, name: 'CheritAR × Think City', item: PAGE_URL },
+  ],
+}
+
+const creativeWorkSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: 'CheritAR × Think City — AR Heritage Tour of Kuala Lumpur',
+  url: PAGE_URL,
+  description:
+    'WebAR heritage platform deployed at three Kuala Lumpur landmarks (Sultan Abdul Samad Building, Victoria Fountain, National Textile Museum). RAG-powered AI avatars narrate each landmark in multiple languages, reached visitors from 12+ countries with zero app downloads.',
+  image: `${URL_BASE}/images/cheritar-think-city/cheritar-think-city_hero.jpg`,
+  creator: { '@id': `${URL_BASE}/#organization` },
+  about: ['Augmented Reality', 'Cultural Heritage', 'AI Avatars', 'Heritage Tourism'],
+  keywords: ['8th Wall', 'WebAR', 'RAG', 'AI avatars', 'heritage tourism', 'Kuala Lumpur', 'Think City'],
+  inLanguage: 'en-MY',
+  isPartOf: { '@id': `${URL_BASE}/#website` },
+  locationCreated: {
+    '@type': 'Place',
+    name: 'Kuala Lumpur Heritage District',
+    address: { '@type': 'PostalAddress', addressLocality: 'Kuala Lumpur', addressCountry: 'MY' },
+  },
+}
+
+const galleryImages = [
+  { n: 1, alt: 'CheritAR × Think City — visitor scanning a QR code at the Sultan Abdul Samad Building to launch the WebAR heritage tour' },
+  { n: 2, alt: 'CheritAR × Think City — AR avatar of a heritage building rendered in the camera view while the visitor stands in Dataran Merdeka' },
+  { n: 3, alt: 'CheritAR × Think City — RAG-powered conversational interface answering a visitor question about KL heritage history' },
+  { n: 4, alt: 'CheritAR × Think City — tourist interacting with an AI heritage avatar at the National Textile Museum' },
+]
 
 export default function CheritarThinkCityPage() {
   return (
     <main className="bg-edt-black text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkSchema) }}
+      />
 
       {/* HERO */}
       <section className="bg-edt-black pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-white/10 pixel-grid">
@@ -35,6 +88,36 @@ export default function CheritarThinkCityPage() {
               Start a Similar Project
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* MEDIA — hero video (poster falls back to hero image; section's pixel-grid is the final fallback) */}
+      <section className="bg-edt-black border-b border-white/10 relative overflow-hidden pixel-grid">
+        <div className="aspect-video w-full relative group">
+          <img
+            src="/images/cheritar-think-city/cheritar-think-city_hero.jpg"
+            alt="CheritAR — Think City"
+            className="absolute inset-0 w-full h-full object-cover brightness-50 group-hover:brightness-100 transition-all duration-500"
+          />
+        </div>
+      </section>
+
+      {/* GALLERY */}
+      <section className="bg-edt-black py-16 border-b border-white/10">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
+          <p className="font-sans text-[11px] font-semibold tracking-widest uppercase text-edt-blue mb-8">Gallery</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            {galleryImages.map((g) => (
+              <img
+                key={g.n}
+                src={`/images/cheritar-think-city/cheritar-think-city_gallery_0${g.n}.jpg`}
+                alt={g.alt}
+                loading="lazy"
+                className="w-full h-auto object-cover border border-white/10"
+              />
+            ))}
+          </div>
+          <YouTubeEmbed videoId="oEW4lWgQin0" title="CheritAR — Think City" />
         </div>
       </section>
 

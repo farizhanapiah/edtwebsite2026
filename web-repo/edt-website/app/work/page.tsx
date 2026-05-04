@@ -5,6 +5,30 @@ export const metadata: Metadata = {
   title: 'Portfolio | EDT Immersive Experience Case Studies Malaysia',
   description:
     "Explore EDT's portfolio: 52,000+ AR impressions, Guinness World Records, and experiential campaigns for Malaysia's biggest brands and government agencies.",
+  alternates: {
+    canonical: '/work',
+    languages: { 'en-MY': '/work', 'x-default': '/work' },
+  },
+}
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: "EDT Portfolio — Immersive Experience Case Studies",
+  url: 'https://weareedt.com/work',
+  description:
+    "EDT's portfolio of immersive AR, VR, MR, AI avatar, projection mapping and interactive installation projects across Malaysia and Southeast Asia.",
+  isPartOf: { '@id': 'https://weareedt.com/#website' },
+  about: { '@id': 'https://weareedt.com/#organization' },
+}
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://weareedt.com' },
+    { '@type': 'ListItem', position: 2, name: 'Work', item: 'https://weareedt.com/work' },
+  ],
 }
 
 const projects = [
@@ -14,6 +38,8 @@ const projects = [
     category: 'VR Training',
     stat: '93% satisfaction · Malaysia Book of Records 2024',
     href: '/work/metahrise',
+    image: '/images/metahrise/metahrise_thumb.jpg',
+    youtubeId: 'E9LTZpKwLto',
     featured: true,
   },
   {
@@ -22,6 +48,8 @@ const projects = [
     category: 'AR Heritage',
     stat: '12 countries reached · 1,442 AR impressions',
     href: '/work/cheritar-think-city',
+    image: '/images/cheritar-think-city/cheritar-think-city_thumb.jpg',
+    youtubeId: 'oEW4lWgQin0',
     featured: true,
   },
   {
@@ -30,6 +58,8 @@ const projects = [
     category: 'AR Event',
     stat: '52,417 AR impressions · 12,040 QR scans',
     href: '/work/arfestkl',
+    image: '/images/arfestkl/arfestkl_thumb.jpg',
+    youtubeId: '1QhRY4hOxpM',
     featured: true,
   },
   {
@@ -38,6 +68,8 @@ const projects = [
     category: 'Immersive Exhibition',
     stat: 'RM 3.2M media value · 5,822 visitors',
     href: '/work/ikat',
+    image: '/images/ikat/ikat_thumb.jpg',
+    youtubeId: 'kZkYuuD3Fjc',
     featured: false,
   },
   {
@@ -46,6 +78,8 @@ const projects = [
     category: 'Interactive Installation',
     stat: 'Interactive walls + AR + AI imagery',
     href: '/work/airasia-founders-gallery',
+    image: '/images/airasia-founders-gallery/airasia-founders-gallery_thumb.jpg',
+    youtubeId: 'DCjNIa-R6tc',
     featured: false,
   },
   {
@@ -54,6 +88,8 @@ const projects = [
     category: 'AR + Immersive Room',
     stat: 'AR try-on + immersive brand room',
     href: '/work/new-balance-grey-day',
+    image: '/images/new-balance-grey-day/new-balance-grey-day_thumb.jpg',
+    youtubeId: 'drOAYjmo928',
     featured: false,
   },
   {
@@ -62,6 +98,8 @@ const projects = [
     category: 'Virtual Production',
     stat: 'ARVENA platform · branded live stream',
     href: '/work',
+    image: '/images/airasia-supersale/airasia-supersale_thumb.jpg',
+    youtubeId: 'DPJieWjycu8',
     featured: false,
   },
   {
@@ -70,6 +108,8 @@ const projects = [
     category: 'AR Interactive LED',
     stat: 'AR + LED interactive installation',
     href: '/work',
+    image: '/images/sunway-wishing-well/sunway-wishing-well_thumb.jpg',
+    youtubeId: 'uCV_ouHd1_w',
     featured: false,
   },
   {
@@ -78,6 +118,9 @@ const projects = [
     category: 'AI Hologram',
     stat: 'Deployed at MATIC KL',
     href: '/work',
+    image: '/images/hologram-stewardess/hologram-stewardess_thumb.jpg',
+    youtubeId: 'ARaygC4XJ5U',
+    youtubeIdSecondary: '8av3k7-6tmg',
     featured: false,
   },
   {
@@ -86,6 +129,8 @@ const projects = [
     category: 'Interactive Wall',
     stat: 'Largest interactive installation for PNB 118 tower',
     href: '/work',
+    image: '/images/pnb-118-stories/pnb-118-stories_thumb.jpg',
+    youtubeId: 'ezLgmijHWRI',
     featured: false,
   },
   {
@@ -94,6 +139,8 @@ const projects = [
     category: 'VR Training',
     stat: 'Forklift simulation · safety training',
     href: '/work',
+    image: '/images/sime-darby-vr-training/sime-darby-vr-training_thumb.jpg',
+    youtubeId: 'MoFESfgjgDE',
     featured: false,
   },
   {
@@ -102,6 +149,8 @@ const projects = [
     category: 'Interactive Installation',
     stat: 'EEG brainwave generative art · Singapore',
     href: '/work',
+    image: '/images/eeg-brainwave-art/eeg-brainwave-art_thumb.jpg',
+    youtubeId: 'GKMJ47xKQ3c',
     featured: false,
   },
   {
@@ -110,6 +159,9 @@ const projects = [
     category: 'VR Experience',
     stat: 'ECCO VR activation · Singapore',
     href: '/work',
+    image: '/images/ecco-vr-putting/ecco-vr-putting_thumb.jpg',
+    youtubeId: 'BTumEJQTIVc',
+    youtubeIdSecondary: '0ki23QmJS1s',
     featured: false,
   },
   {
@@ -118,6 +170,8 @@ const projects = [
     category: 'VR Training',
     stat: 'Disaster preparedness VR · Japan',
     href: '/work',
+    image: '/images/tokyo-vr-earthquake/tokyo-vr-earthquake_thumb.jpg',
+    youtubeId: 'sc59WclFLog',
     featured: false,
   },
   {
@@ -126,6 +180,8 @@ const projects = [
     category: 'VR Experience',
     stat: 'VR activation · sneaker festival KL',
     href: '/work',
+    image: '/images/sneakerlah-vr/sneakerlah-vr_thumb.jpg',
+    youtubeId: '-GrZFwLmAr0',
     featured: false,
   },
   {
@@ -134,6 +190,8 @@ const projects = [
     category: 'Projection Mapping',
     stat: 'Georgetown Festival competition win',
     href: '/work',
+    image: '/images/georgetown-projection/georgetown-projection_thumb.png',
+    youtubeId: 'bdcofqr7Hu4',
     featured: false,
   },
   {
@@ -142,6 +200,8 @@ const projects = [
     category: 'Projection Mapping',
     stat: '2 landmark projection projects',
     href: '/work',
+    image: '/images/sarawak-projection/sarawak-projection_thumb.png',
+    youtubeId: 'iGEyKhjoyXc',
     featured: false,
   },
   {
@@ -150,6 +210,8 @@ const projects = [
     category: 'Virtual Production',
     stat: 'ARVENA live music immersive stage',
     href: '/work',
+    image: '/images/silau-maya-stage/silau-maya-stage_thumb.jpg',
+    youtubeId: 'EBA4xa7uOX4',
     featured: false,
   },
   {
@@ -158,6 +220,8 @@ const projects = [
     category: 'Virtual Production',
     stat: 'Unreal Engine music video production',
     href: '/work',
+    image: '/images/mobile-legends-supremasea/mobile-legends-supremasea_thumb.jpg',
+    youtubeId: 'nf2AD52UUZs',
     featured: false,
   },
   {
@@ -166,6 +230,8 @@ const projects = [
     category: 'AI Virtual Influencer',
     stat: 'AI virtual influencer campaign',
     href: '/work',
+    image: '/images/shayla-sis-shayla/shayla-sis-shayla_thumb.jpg',
+    youtubeId: 'kmvf2IjQdNI',
     featured: false,
   },
 ]
@@ -178,6 +244,15 @@ export default function WorkPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
       {/* HERO */}
       <section className="bg-edt-black pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-white/10 pixel-grid">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
@@ -248,8 +323,14 @@ export default function WorkPage() {
                     {p.client}.exe
                   </span>
                 </div>
-                <div className="h-44 bg-edt-blue/10 pixel-grid relative">
-                  <div className="absolute bottom-4 left-4">
+                <div className="h-44 bg-edt-blue/10 pixel-grid relative overflow-hidden">
+                  <img
+                    src={p.image}
+                    alt={`${p.client} — ${p.title}`}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute bottom-4 left-4 z-10">
                     <span className="edt-badge">{p.category}</span>
                   </div>
                 </div>
@@ -286,6 +367,14 @@ export default function WorkPage() {
                   <span className="font-sans text-[11px] font-semibold tracking-widest text-white/20 pt-1 flex-shrink-0 w-6">
                     {String(i + 1).padStart(2, '0')}
                   </span>
+                  <div className="w-24 h-16 flex-shrink-0 overflow-hidden bg-edt-blue/10 hidden sm:block">
+                    <img
+                      src={p.image}
+                      alt={`${p.client} — ${p.title}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
                   <div>
                     <span className="edt-badge mb-2 inline-block">{p.category}</span>
                     <h3 className="font-sans text-[15px] font-semibold text-white group-hover:text-edt-blue transition-colors">

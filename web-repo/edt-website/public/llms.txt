@@ -1,0 +1,53 @@
+# EDT — Experiential Design Team
+
+> EDT (Experiential Design Team) is Malaysia's leading experiential technology studio, building immersive AR, VR, MR, AI avatar, projection mapping and interactive installation experiences for brands, events, government and tourism across Southeast Asia. Legal entity: Adticles Sdn Bhd. Headquartered in Kuala Lumpur. 50+ projects delivered across 12 countries. Awards include Malaysia Book of Records (2024) and Management Initiative of the Year — Malaysia (2025).
+
+EDT works at the intersection of experiential design, emerging technology, business strategy and immersive storytelling. Core competencies include Unity and Unreal Engine development, TouchDesigner interactive systems, AI pipeline architecture (OpenAI, Pinecone, Supabase, N8N), ElevenLabs TTS integration, projection mapping (Epson 7K–10K ANSI), XR hardware (Meta Quest 3, LiDAR, LED P2.0–P2.5), 3D modelling and digital twins.
+
+Clients include Petronas, AirAsia, Malaysia Airlines, Sunway, MCMC, New Balance, Prudential, Vans, Think City, Accenture, CIMB Bank, Maybank, Public Bank.
+
+## Company
+
+- [About EDT](https://weareedt.com/about): Mission, principles, team, capabilities, awards, partner network.
+- [Contact](https://weareedt.com/contact): Project enquiries, response within 24 hours, Kuala Lumpur office.
+- [Partners](https://weareedt.com/partners): Agency partnership programme.
+
+## Services
+
+- [AR / VR / MR Development](https://weareedt.com/services/ar-vr-mr-development): Cross-platform immersive experiences, WebAR to full VR.
+- [AI Avatars & Holograms](https://weareedt.com/services/ai-avatars-holograms): Intelligent holographic avatars with brand knowledge.
+- [Virtual Production](https://weareedt.com/services/virtual-production): Unreal Engine environments for live streaming and branded content.
+- [Interactive Installations](https://weareedt.com/services/interactive-installations): LED walls, touch displays, motion-reactive immersive rooms.
+- [Projection Mapping](https://weareedt.com/services/projection-mapping): Architectural and stage projection on any surface.
+- [Immersive Events](https://weareedt.com/services/immersive-events): End-to-end experiential event production.
+
+## Products
+
+- [RiaReality](https://weareedt.com/products/riaReality): Mixed-reality platform for physical spaces (games, education, real estate, heritage).
+- [Hoomans.ai](https://weareedt.com/products/hoomans-ai): AI-powered holographic avatars with RAG knowledge base and TTS voice.
+- [MimpiLab](https://weareedt.com/products/mimpilab): AI photobooth with brand-controllable themed photos.
+- [CheritAR](https://weareedt.com/products/cheritar): AR avatars that give heritage landmarks a voice.
+- [WayangMind](https://weareedt.com/products/wayangmind): VR mental wellness with AI-personalised guided sessions.
+- [ARVENA](https://weareedt.com/products/arvena): Virtual production platform replacing physical sets with Unreal Engine.
+
+## Case Studies
+
+- [MetaHRise (MCMC)](https://weareedt.com/work/metahrise): Multiplayer VR onboarding game — 93% satisfaction, 40% efficiency gain, 145 employees, Malaysia Book of Records 2024.
+- [ARFestKL](https://weareedt.com/work/arfestkl): Downtown Kuala Lumpur transformed into a 30-point WebAR playground — 52,417 AR impressions, 12,040 QR scans, 42 artists, 35 artworks.
+- [IKAT Malaysia](https://weareedt.com/work/ikat): Touring immersive textile heritage exhibition — 5,822 visitors, RM 3.2M media value, 382,720 social reach, 3 cities.
+- [AirAsia Founders' Gallery](https://weareedt.com/work/airasia-founders-gallery): Permanent interactive gallery at AirAsia RedQ HQ Sepang — multi-panel interactive walls, WebAR touchpoints, AI-generated historical imagery, 270° LED display.
+- [CheritAR × Think City](https://weareedt.com/work/cheritar-think-city): AR-powered heritage tours of three KL landmarks (Sultan Abdul Samad Building, Victoria Fountain, National Textile Museum) — reached visitors from 12+ countries with zero app downloads.
+- [New Balance Grey Day](https://weareedt.com/work/new-balance-grey-day): WebAR try-on plus motion-reactive immersive brand room for Grey Day Malaysia activation.
+
+## Industries Served
+
+- [Tourism & Heritage](https://weareedt.com/industries/tourism-heritage)
+- [Retail & Malls](https://weareedt.com/industries/retail-malls)
+- [Government](https://weareedt.com/industries/government)
+- [Education](https://weareedt.com/industries/education)
+- [Corporate Events](https://weareedt.com/industries/corporate-events)
+- [Healthcare & Wellness](https://weareedt.com/industries/healthcare-wellness)
+
+## Portfolio Index
+
+- [All Work](https://weareedt.com/work): Complete portfolio — 50+ projects across Malaysia, Singapore, Qatar, Hong Kong, Japan and beyond.

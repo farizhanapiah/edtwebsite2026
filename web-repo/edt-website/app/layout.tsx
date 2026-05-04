@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
-import WhatsAppButton from '@/components/layout/WhatsAppButton'
 
 export const metadata: Metadata = {
   title: {
@@ -12,6 +11,24 @@ export const metadata: Metadata = {
   description:
     "Malaysia's leading experiential technology studio. AR, VR, MR, AI holograms and immersive activations for brands, events, tourism and government across Southeast Asia.",
   metadataBase: new URL('https://weareedt.com'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-MY': '/',
+      'x-default': '/',
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
   openGraph: {
     type: 'website',
     locale: 'en_MY',
@@ -35,6 +52,16 @@ export const metadata: Metadata = {
     apple: '/favicon/apple-touch-icon.png',
   },
   manifest: '/favicon/site.webmanifest',
+  applicationName: 'Experiential Design Team',
+  authors: [{ name: 'Experiential Design Team', url: 'https://weareedt.com' }],
+  creator: 'Experiential Design Team',
+  publisher: 'Experiential Design Team',
+  category: 'Creative Technology',
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
 }
 
 export default function RootLayout({
@@ -51,7 +78,6 @@ export default function RootLayout({
         <Navbar />
         <main className="pt-16">{children}</main>
         <Footer />
-        <WhatsAppButton />
       </body>
     </html>
   )

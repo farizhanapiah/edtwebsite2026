@@ -5,6 +5,47 @@ export const metadata: Metadata = {
   title: "About EDT | Malaysia's Premier Experiential Technology Studio",
   description:
     "Meet the team behind Malaysia's most immersive experiences. EDT has delivered 50+ projects across 12 countries for Petronas, AirAsia, Sunway and more.",
+  alternates: {
+    canonical: '/about',
+    languages: { 'en-MY': '/about', 'x-default': '/about' },
+  },
+}
+
+const faqs = [
+  {
+    q: 'What does EDT (Experiential Design Team) do?',
+    a: "EDT is a Kuala Lumpur-based creative technology studio that builds immersive AR, VR, MR, AI avatar, projection mapping and interactive installation experiences for brands, government, tourism and events. We work end-to-end — from concept and creative direction through technical delivery, on-site commissioning and post-event support.",
+  },
+  {
+    q: 'Where is EDT based and which markets do you serve?',
+    a: "EDT is headquartered in Kuala Lumpur, Malaysia. The studio has delivered projects across 12+ countries including Malaysia, Singapore, Qatar, Hong Kong and Japan, and routinely takes briefs from anywhere in Southeast Asia and the wider Asia-Pacific region.",
+  },
+  {
+    q: 'What technologies and tools does EDT specialise in?',
+    a: 'Core stack includes Unity and Unreal Engine for real-time 3D, TouchDesigner for interactive media systems, 8th Wall for WebAR, AI pipelines built on OpenAI / Pinecone / Supabase / N8N, ElevenLabs for TTS voice, projection mapping with Epson 7K–10K ANSI projectors, and XR hardware including Meta Quest 3, LiDAR sensors and LED P2.0–P2.5 wall systems.',
+  },
+  {
+    q: 'How do project enquiries work?',
+    a: 'Send a brief via the contact form. EDT responds within 24 hours on Malaysian working days (Monday–Friday, 9am–6pm MYT). Initial response is followed by a discovery call, then a tailored proposal covering concept, scope, timeline and investment.',
+  },
+  {
+    q: 'Does EDT work with agencies?',
+    a: "Yes. EDT runs a white-label agency partnership programme — agencies can pitch immersive AR, VR, AI and interactive capabilities to their clients without building an internal R&D team. Details are on the Partners page.",
+  },
+  {
+    q: 'Has EDT received any awards or recognition?',
+    a: 'Recent recognition includes Management Initiative of the Year — Malaysia (2025), Excellence Awards Malaysia (2024), and a Malaysia Book of Records entry (2024) for the MetaHRise multiplayer VR onboarding project delivered for MCMC.',
+  },
+]
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
 }
 
 const principles = [
@@ -57,6 +98,11 @@ const partnerGroups = [
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       {/* ── HERO ─────────────────────────────────────────────────────── */}
       <section className="relative bg-edt-black pt-20 pb-24 lg:pt-28 lg:pb-32 overflow-hidden pixel-grid border-b border-white/10">
         <div className="absolute left-0 top-0 bottom-0 w-px bg-edt-blue/20" />
@@ -221,6 +267,30 @@ export default function AboutPage() {
                   {g.label}
                 </p>
                 <p className="font-sans text-[14px] text-white/70">{g.names}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ──────────────────────────────────────────────────────── */}
+      <section className="bg-surface py-24 border-b border-white/10">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
+          <span className="font-sans text-[11px] font-semibold tracking-[0.12em] uppercase text-edt-blue mb-4 block">
+            FAQ
+          </span>
+          <h2 className="display-md text-white mb-12 max-w-[700px]">
+            Frequently Asked Questions
+          </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/10">
+            {faqs.map((f) => (
+              <div key={f.q} className="bg-surface p-8 lg:p-10">
+                <h3 className="font-sans text-[16px] font-semibold text-white mb-3 leading-snug">
+                  {f.q}
+                </h3>
+                <p className="font-sans text-[14px] text-edt-grey leading-relaxed">
+                  {f.a}
+                </p>
               </div>
             ))}
           </div>

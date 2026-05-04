@@ -1,15 +1,79 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import YouTubeEmbed from '@/components/YouTubeEmbed'
 
 export const metadata: Metadata = {
   title: 'New Balance Grey Day | AR + Immersive Room | EDT',
   description:
     "EDT created an AR try-on experience and immersive brand room for New Balance's Grey Day activation in Malaysia.",
+  alternates: {
+    canonical: '/work/new-balance-grey-day',
+    languages: {
+      'en-MY': '/work/new-balance-grey-day',
+      'x-default': '/work/new-balance-grey-day',
+    },
+  },
 }
+
+const URL_BASE = 'https://weareedt.com'
+const PAGE_URL = `${URL_BASE}/work/new-balance-grey-day`
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: URL_BASE },
+    { '@type': 'ListItem', position: 2, name: 'Work', item: `${URL_BASE}/work` },
+    { '@type': 'ListItem', position: 3, name: 'New Balance Grey Day', item: PAGE_URL },
+  ],
+}
+
+const creativeWorkSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: 'New Balance Grey Day Malaysia — AR Try-On + Immersive Brand Room',
+  url: PAGE_URL,
+  description:
+    "Two-part Grey Day activation built by EDT for New Balance Malaysia: a WebAR foot-tracking try-on experience for the Grey Day collection and a motion-reactive immersive brand room with LED P2.0 walls and TouchDesigner-driven content.",
+  image: `${URL_BASE}/images/new-balance-grey-day/new-balance-grey-day_hero.jpg`,
+  creator: { '@id': `${URL_BASE}/#organization` },
+  about: ['Augmented Reality', 'Brand Activation', 'Immersive Installation', 'Sneaker Retail'],
+  keywords: [
+    '8th Wall',
+    'WebAR foot tracking',
+    'TouchDesigner',
+    'LED P2.0',
+    'New Balance',
+    'Grey Day',
+    'brand activation',
+  ],
+  inLanguage: 'en-MY',
+  isPartOf: { '@id': `${URL_BASE}/#website` },
+  locationCreated: {
+    '@type': 'Place',
+    name: 'Malaysia',
+    address: { '@type': 'PostalAddress', addressCountry: 'MY' },
+  },
+}
+
+const galleryImages = [
+  { n: 1, alt: 'New Balance Grey Day Malaysia — visitor using WebAR foot-tracking to virtually try on the Grey Day sneaker collection' },
+  { n: 2, alt: 'New Balance Grey Day Malaysia — motion-reactive LED brand room responding to attendees as they move through the activation space' },
+  { n: 3, alt: 'New Balance Grey Day Malaysia — branded content moment inside the immersive Grey Day room set up for social capture' },
+  { n: 4, alt: "New Balance Grey Day Malaysia — close-up of the AR try-on interface showing a Grey Day silhouette rendered onto a shopper's foot" },
+]
 
 export default function NewBalanceGreyDayPage() {
   return (
     <main className="bg-edt-black text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkSchema) }}
+      />
 
       {/* HERO */}
       <section className="bg-edt-black pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-white/10 pixel-grid">
@@ -35,6 +99,36 @@ export default function NewBalanceGreyDayPage() {
               Start a Similar Project
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* MEDIA — hero video (poster falls back to hero image; section's pixel-grid is the final fallback) */}
+      <section className="bg-edt-black border-b border-white/10 relative overflow-hidden pixel-grid">
+        <div className="aspect-video w-full relative group">
+          <img
+            src="/images/new-balance-grey-day/new-balance-grey-day_hero.jpg"
+            alt="New Balance Grey Day"
+            className="absolute inset-0 w-full h-full object-cover brightness-50 group-hover:brightness-100 transition-all duration-500"
+          />
+        </div>
+      </section>
+
+      {/* GALLERY */}
+      <section className="bg-edt-black py-16 border-b border-white/10">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
+          <p className="font-sans text-[11px] font-semibold tracking-widest uppercase text-edt-blue mb-8">Gallery</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            {galleryImages.map((g) => (
+              <img
+                key={g.n}
+                src={`/images/new-balance-grey-day/new-balance-grey-day_gallery_0${g.n}.jpg`}
+                alt={g.alt}
+                loading="lazy"
+                className="w-full h-auto object-cover border border-white/10"
+              />
+            ))}
+          </div>
+          <YouTubeEmbed videoId="drOAYjmo928" title="New Balance Grey Day" />
         </div>
       </section>
 

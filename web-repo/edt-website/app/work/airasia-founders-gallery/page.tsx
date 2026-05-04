@@ -1,15 +1,79 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import YouTubeEmbed from '@/components/YouTubeEmbed'
 
 export const metadata: Metadata = {
   title: "AirAsia Founders' Gallery | Interactive Installation | EDT",
   description:
     "EDT built an interactive wall + AR + AI imagery installation for the AirAsia Founders' Gallery — bringing the airline's founding story to life.",
+  alternates: {
+    canonical: '/work/airasia-founders-gallery',
+    languages: {
+      'en-MY': '/work/airasia-founders-gallery',
+      'x-default': '/work/airasia-founders-gallery',
+    },
+  },
 }
+
+const URL_BASE = 'https://weareedt.com'
+const PAGE_URL = `${URL_BASE}/work/airasia-founders-gallery`
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: URL_BASE },
+    { '@type': 'ListItem', position: 2, name: 'Work', item: `${URL_BASE}/work` },
+    { '@type': 'ListItem', position: 3, name: "AirAsia Founders' Gallery", item: PAGE_URL },
+  ],
+}
+
+const creativeWorkSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: "AirAsia Founders' Gallery — Permanent Interactive Installation",
+  url: PAGE_URL,
+  description:
+    "Permanent interactive gallery designed and built by EDT at AirAsia's RedQ headquarters in Sepang. Combines multi-panel interactive walls, WebAR touchpoints, AI-generated historical imagery and a 270° LED display environment to tell the airline's founding story.",
+  image: `${URL_BASE}/images/airasia-founders-gallery/airasia-founders-gallery_hero.jpg`,
+  creator: { '@id': `${URL_BASE}/#organization` },
+  about: ['Interactive Installation', 'Brand Heritage', 'AI Generative Imagery', 'WebAR'],
+  keywords: [
+    'TouchDesigner',
+    'WebAR',
+    'LED P2.0',
+    'generative AI imagery',
+    'interactive walls',
+    'AirAsia',
+    'permanent installation',
+  ],
+  inLanguage: 'en-MY',
+  isPartOf: { '@id': `${URL_BASE}/#website` },
+  locationCreated: {
+    '@type': 'Place',
+    name: 'AirAsia RedQ HQ, Sepang',
+    address: { '@type': 'PostalAddress', addressLocality: 'Sepang', addressCountry: 'MY' },
+  },
+}
+
+const galleryImages = [
+  { n: 1, alt: "AirAsia Founders' Gallery — multi-panel interactive timeline wall at AirAsia RedQ HQ Sepang" },
+  { n: 2, alt: "AirAsia Founders' Gallery — visitor exploring AI-generated historical imagery of AirAsia's founding moments" },
+  { n: 3, alt: "AirAsia Founders' Gallery — 270-degree curved LED wall delivering ambient AirAsia brand films and timeline animations" },
+  { n: 4, alt: "AirAsia Founders' Gallery — WebAR touchpoint surfacing 3D aircraft models and route map content" },
+]
 
 export default function AirAsiaFoundersGalleryPage() {
   return (
     <main className="bg-edt-black text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkSchema) }}
+      />
 
       {/* HERO */}
       <section className="bg-edt-black pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-white/10 pixel-grid">
@@ -35,6 +99,36 @@ export default function AirAsiaFoundersGalleryPage() {
               Start a Similar Project
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* MEDIA — hero video (poster falls back to hero image; section's pixel-grid is the final fallback) */}
+      <section className="bg-edt-black border-b border-white/10 relative overflow-hidden pixel-grid">
+        <div className="aspect-video w-full relative group">
+          <img
+            src="/images/airasia-founders-gallery/airasia-founders-gallery_hero.jpg"
+            alt="AirAsia Founders' Gallery"
+            className="absolute inset-0 w-full h-full object-cover brightness-50 group-hover:brightness-100 transition-all duration-500"
+          />
+        </div>
+      </section>
+
+      {/* GALLERY */}
+      <section className="bg-edt-black py-16 border-b border-white/10">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
+          <p className="font-sans text-[11px] font-semibold tracking-widest uppercase text-edt-blue mb-8">Gallery</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            {galleryImages.map((g) => (
+              <img
+                key={g.n}
+                src={`/images/airasia-founders-gallery/airasia-founders-gallery_gallery_0${g.n}.jpg`}
+                alt={g.alt}
+                loading="lazy"
+                className="w-full h-auto object-cover border border-white/10"
+              />
+            ))}
+          </div>
+          <YouTubeEmbed videoId="DCjNIa-R6tc" title="AirAsia Founders' Gallery" />
         </div>
       </section>
 

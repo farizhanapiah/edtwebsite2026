@@ -1,10 +1,48 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import YouTubeEmbed from '@/components/YouTubeEmbed'
 
 export const metadata: Metadata = {
   title: 'MetaHRise Case Study | VR Onboarding for MCMC | EDT',
   description:
     "How EDT built MetaHRise for MCMC — a multiplayer VR onboarding game that achieved 93% satisfaction, 40% efficiency gain, and set the Malaysia Book of Records.",
+  alternates: {
+    canonical: '/work/metahrise',
+    languages: { 'en-MY': '/work/metahrise', 'x-default': '/work/metahrise' },
+  },
+}
+
+const URL_BASE = 'https://weareedt.com'
+const PAGE_URL = `${URL_BASE}/work/metahrise`
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: URL_BASE },
+    { '@type': 'ListItem', position: 2, name: 'Work', item: `${URL_BASE}/work` },
+    { '@type': 'ListItem', position: 3, name: 'MetaHRise', item: PAGE_URL },
+  ],
+}
+
+const creativeWorkSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: 'MetaHRise — Multiplayer VR Onboarding for MCMC',
+  url: PAGE_URL,
+  description:
+    'Multiplayer VR onboarding game built for MCMC. 145 employees onboarded simultaneously, 93% satisfaction, 40% efficiency improvement, role comprehension up from 48% to 83%. Awarded Malaysia Book of Records (2024) and Management Initiative of the Year — Malaysia (2025).',
+  image: `${URL_BASE}/images/metahrise/metahrise_hero.jpg`,
+  creator: { '@id': `${URL_BASE}/#organization` },
+  about: ['Virtual Reality Training', 'Corporate Onboarding', 'Multiplayer VR'],
+  keywords: ['Unity', 'Meta Quest 3', 'VR training', 'multiplayer VR', 'MCMC', 'onboarding'],
+  inLanguage: 'en-MY',
+  isPartOf: { '@id': `${URL_BASE}/#website` },
+  award: [
+    'Management Initiative of the Year — Malaysia, 2025',
+    'Malaysia Book of Records — 2024',
+  ],
+  dateCreated: '2024',
 }
 
 const results = [
@@ -19,9 +57,25 @@ const awards = [
   'Malaysia Book of Records — 2024',
 ]
 
+const galleryImages = [
+  { n: 1, alt: 'MetaHRise — MCMC employees in Meta Quest 3 headsets entering the multiplayer VR onboarding environment' },
+  { n: 2, alt: 'MetaHRise — VR avatar interacting with MCMC brand-themed onboarding scenario inside the virtual workspace' },
+  { n: 3, alt: 'MetaHRise — group of new MCMC recruits collaborating in the multiplayer VR onboarding session' },
+  { n: 4, alt: 'MetaHRise — interactive VR mini-game station designed to teach MCMC departmental roles and brand values' },
+]
+
 export default function MetaHRisePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkSchema) }}
+      />
+
       {/* HERO */}
       <section className="bg-edt-black pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-white/10 pixel-grid">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
@@ -51,6 +105,36 @@ export default function MetaHRisePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* MEDIA — hero video (poster falls back to hero image; section's pixel-grid is the final fallback) */}
+      <section className="bg-edt-black border-b border-white/10 relative overflow-hidden pixel-grid">
+        <div className="aspect-video w-full relative group">
+          <img
+            src="/images/metahrise/metahrise_hero.jpg"
+            alt="MetaHRise — MCMC VR Training"
+            className="absolute inset-0 w-full h-full object-cover brightness-50 group-hover:brightness-100 transition-all duration-500"
+          />
+        </div>
+      </section>
+
+      {/* GALLERY */}
+      <section className="bg-edt-black py-16 border-b border-white/10">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
+          <p className="font-sans text-[11px] font-semibold tracking-widest uppercase text-edt-blue mb-8">Gallery</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            {galleryImages.map((g) => (
+              <img
+                key={g.n}
+                src={`/images/metahrise/metahrise_gallery_0${g.n}.jpg`}
+                alt={g.alt}
+                loading="lazy"
+                className="w-full h-auto object-cover border border-white/10"
+              />
+            ))}
+          </div>
+          <YouTubeEmbed videoId="E9LTZpKwLto" title="MetaHRise — MCMC VR Training" />
         </div>
       </section>
 

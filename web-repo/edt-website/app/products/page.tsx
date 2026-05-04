@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: 'Products | RiaReality, Hoomans.ai, MimpiLab, CheritAR, WayangMind, ARVENA',
   description:
     'Six immersive technology platforms built by EDT. From AI holographic avatars to mixed reality gaming, AI photobooths, heritage AR, VR wellness, and virtual production.',
+  alternates: {
+    canonical: '/products',
+    languages: { 'en-MY': '/products', 'x-default': '/products' },
+  },
 }
 
 const products = [
