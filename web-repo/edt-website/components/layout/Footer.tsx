@@ -28,10 +28,9 @@ const companyLinks = [
 ]
 
 const socialLinks = [
-  { label: 'Instagram', href: 'https://instagram.com/weareedt' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/company/weareedt' },
-  { label: 'YouTube', href: 'https://youtube.com/@weareedt' },
-  { label: 'TikTok', href: 'https://tiktok.com/@weareedt' },
+  { label: 'Instagram', href: 'https://www.instagram.com/weareedt/' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/31284467/' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@weareEDT' },
 ]
 
 export default function Footer() {
@@ -130,7 +129,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <p className="font-sans text-[12px] text-white/30">
-            © 2026 Experiential Design Team (Adticles Sdn Bhd). All rights reserved.
+            © 2026 Experiential Design Team (Adticles Sdn Bhd 1149616-M). All rights reserved.
           </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-6">
             <p className="font-sans text-[12px] text-white/30">
@@ -142,12 +141,6 @@ export default function Footer() {
                 className="font-sans text-[12px] text-white/30 hover:text-white transition-colors"
               >
                 +60 3-6411 5361
-              </a>
-              <a
-                href="mailto:hello@weareedt.com"
-                className="font-sans text-[12px] text-white/30 hover:text-white transition-colors"
-              >
-                hello@weareedt.com
               </a>
             </div>
           </div>

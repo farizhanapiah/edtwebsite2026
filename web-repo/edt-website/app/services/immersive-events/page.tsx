@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import YouTubeEmbed from '@/components/YouTubeEmbed'
 
 export const metadata: Metadata = {
   title: 'Immersive Events Malaysia | Brand Activations & Experiential Production | EDT',
@@ -68,6 +69,7 @@ const stats = [
 const relatedCaseStudies = [
   {
     name: 'ARFestKL',
+    videoId: '1QhRY4hOxpM',
     client: 'Kuala Lumpur City Hall (DBKL)',
     description:
       'Malaysia\u2019s first city-scale AR festival. Deployed across 10+ landmark locations in KL, ARFestKL generated 52,417 AR impressions through WebAR activations, interactive LED installations, and a public AR photo experience that trended nationally.',
@@ -76,6 +78,7 @@ const relatedCaseStudies = [
   },
   {
     name: 'IKAT — Cultural Textile Experience',
+    videoId: 'kZkYuuD3Fjc',
     client: 'Ministry of Tourism, Arts & Culture',
     description:
       'A travelling immersive exhibition celebrating Malaysia\u2019s IKAT textile heritage. The experience deployed across 3 cities, combining projection mapping, interactive weaving simulations, and an AI-guided narrative — reaching 5,822 visitors in its first run.',
@@ -103,8 +106,15 @@ export default function ImmersiveEventsPage() {
   return (
     <>
       {/* HERO */}
-      <section className="bg-edt-black pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-white/10 pixel-grid">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
+      <section className="relative bg-edt-black pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-white/10 overflow-hidden">
+        <img
+          src="/images/ikat/ikat_hero.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-edt-black via-edt-black/80 to-edt-black/40" />
+        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-20">
           <nav className="flex items-center gap-2 text-[12px] text-edt-grey mb-8">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <span>/</span>
@@ -198,11 +208,7 @@ export default function ImmersiveEventsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {relatedCaseStudies.map((cs) => (
               <div key={cs.name} className="border border-white/10 p-8">
-                <div className="window-bar mb-6">
-                  <span className="window-dot" />
-                  <span className="window-dot" />
-                  <span className="window-dot" />
-                </div>
+                <YouTubeEmbed videoId={cs.videoId} title={cs.name} className="mb-6" />
                 <p className="font-sans text-[11px] tracking-[0.1em] uppercase text-edt-grey mb-2">
                   {cs.client}
                 </p>

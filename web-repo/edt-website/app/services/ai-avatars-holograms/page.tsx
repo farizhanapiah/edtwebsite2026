@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 const offerings = [
   { title: 'Hoomans.ai', desc: 'Web-based AI avatar with RAG knowledge base, TTS voice, and client dashboard' },
   { title: 'Pre-animated avatars', desc: 'Motion-captured, scripted characters for controlled deployments' },
-  { title: 'Real-time AI-powered avatars', desc: 'Live generative AI responses via OpenAI integration' },
+  { title: 'Real-time AI-powered avatars', desc: 'Live generative AI responses via Any LLM integration' },
   { title: 'Virtual influencers', desc: 'Branded AI characters for ongoing social and event use' },
-  { title: 'Holographic stewardesses / guides', desc: 'Information kiosks for airports, museums, malls' },
+  { title: 'Holographic Concierge System', desc: 'Information kiosks for airports, museums, malls' },
 ]
 
 const deployments = [
@@ -89,7 +89,7 @@ export default function AIAvatarsPage() {
         <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
           <p className="font-sans text-[13px] font-semibold tracking-widest uppercase text-white/70 mb-3">Powered by</p>
           <div className="flex flex-wrap gap-4">
-            {['OpenAI GPT', 'RAG Knowledge Base', 'ElevenLabs TTS', '86" Stellarlink Display', 'Multilingual Support'].map((t) => (
+            {['Any LLM', 'RAG Knowledge Base', 'ElevenLabs TTS', '86" Stellarlink Display', 'Multilingual Support'].map((t) => (
               <span key={t} className="font-sans text-[13px] font-semibold text-white border border-white/30 px-4 py-2">
                 {t}
               </span>

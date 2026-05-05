@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import FormspreeForm from '@/components/FormspreeForm'
 
 export const metadata: Metadata = {
   title: 'Contact EDT | Get a Quote for AR VR & Immersive Experiences Malaysia',
@@ -31,7 +32,6 @@ const localBusinessSchema = {
     'Malaysia immersive tech studio delivering AR, VR, MR, AI avatar and interactive installation experiences.',
   url: 'https://weareedt.com',
   telephone: '+60364115361',
-  email: 'hello@weareedt.com',
   image: 'https://weareedt.com/favicon/web-app-manifest-512x512.png',
   address: {
     '@type': 'PostalAddress',
@@ -52,8 +52,9 @@ const localBusinessSchema = {
   ],
   areaServed: ['Malaysia', 'Singapore', 'Qatar', 'Hong Kong'],
   sameAs: [
-    'https://www.instagram.com/edtmy',
-    'https://www.linkedin.com/company/edtmy',
+    'https://www.instagram.com/weareedt/',
+    'https://www.linkedin.com/company/31284467/',
+    'https://www.youtube.com/@weareEDT',
   ],
 }
 
@@ -91,10 +92,13 @@ export default function ContactPage() {
 
               {/* FORM */}
               <div className="lg:col-span-2">
-                <form action="https://formspree.io/f/mwvyvznj" method="POST" className="space-y-6">
+                <FormspreeForm
+                  endpoint="https://formspree.io/f/mwvyvznj"
+                  thankYouType="contact"
+                  className="space-y-6"
+                >
 
                   <input type="hidden" name="_subject" value="New project enquiry — EDT" />
-                  <input type="hidden" name="_next" value="https://weareedt.com/thank-you?type=contact" />
                   <input
                     type="text"
                     name="_gotcha"
@@ -158,7 +162,7 @@ export default function ContactPage() {
                         id="phone"
                         name="phone"
                         className="w-full bg-surface border border-white/20 text-white px-5 py-4 text-sm placeholder:text-edt-grey/50 focus:outline-none focus:border-edt-blue"
-                        placeholder="+60 11 1234 5678"
+                        placeholder="Your phone number"
                       />
                     </div>
                   </div>
@@ -235,7 +239,7 @@ export default function ContactPage() {
                     </p>
                   </div>
 
-                </form>
+                </FormspreeForm>
               </div>
 
               {/* CONTACT DETAILS */}
@@ -255,51 +259,15 @@ export default function ContactPage() {
                   </p>
                 </div>
 
-                {/* Direct contact */}
-                <div className="border border-white/10 p-8 space-y-6">
-                  <h3 className="text-white font-semibold text-lg">Direct Contact</h3>
-
-                  <div>
-                    <div className="text-edt-grey text-xs uppercase tracking-widest mb-1">Email</div>
-                    <a
-                      href="mailto:hello@edtmy.com"
-                      className="text-edt-blue hover:underline text-sm"
-                    >
-                      hello@edtmy.com
-                    </a>
-                  </div>
-
-                  <div>
-                    <div className="text-edt-grey text-xs uppercase tracking-widest mb-1">Phone</div>
-                    <a
-                      href="tel:+60111234567"
-                      className="text-white text-sm hover:text-edt-blue transition-colors"
-                    >
-                      +60 11 1234 5678
-                    </a>
-                  </div>
-
-                  <div>
-                    <div className="text-edt-grey text-xs uppercase tracking-widest mb-1">WhatsApp</div>
-                    <a
-                      href="https://wa.me/60111234567"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white text-sm hover:text-edt-blue transition-colors"
-                    >
-                      Chat on WhatsApp →
-                    </a>
-                  </div>
-                </div>
-
                 {/* Office */}
                 <div className="border border-white/10 p-8">
                   <h3 className="text-white font-semibold text-lg mb-4">Office</h3>
                   <address className="not-italic text-edt-grey text-sm leading-relaxed space-y-1">
-                    <div className="text-white font-semibold">EDT — Experiential Design Team</div>
-                    <div>Kuala Lumpur</div>
-                    <div>Wilayah Persekutuan</div>
-                    <div>Malaysia</div>
+                    <div className="text-white font-semibold">Adticles Sdn Bhd 1149616-M</div>
+                    <div className="text-white">(Experiential Design Team)</div>
+                    <div className="pt-2">A-3-13 Centrio Pantai Hillpark,</div>
+                    <div>Jalan Pantai Murni,</div>
+                    <div>59200 Kuala Lumpur</div>
                   </address>
                   <div className="mt-6 pt-6 border-t border-white/10">
                     <div className="text-edt-grey text-xs uppercase tracking-widest mb-1">Hours</div>
@@ -404,12 +372,6 @@ export default function ContactPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <a href="#top" className="btn-secondary border-white text-white">
                 Back to Top
-              </a>
-              <a
-                href="mailto:hello@edtmy.com"
-                className="btn-ghost border-white text-white"
-              >
-                Email EDT
               </a>
             </div>
           </div>

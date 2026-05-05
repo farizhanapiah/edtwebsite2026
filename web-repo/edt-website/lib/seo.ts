@@ -20,11 +20,6 @@ export const DEFAULT_SEO = {
       },
     ],
   },
-  twitter: {
-    handle: '@weareedt',
-    site: '@weareedt',
-    cardType: 'summary_large_image',
-  },
   additionalMetaTags: [
     { name: 'keywords', content: 'AR VR Malaysia, immersive experience Malaysia, AI avatar hologram, mixed reality events, XR studio Southeast Asia, projection mapping Malaysia, interactive installations KL' },
     { name: 'author', content: 'Experiential Design Team (EDT)' },

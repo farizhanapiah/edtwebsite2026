@@ -24,8 +24,9 @@ export const ORGANIZATION_SCHEMA = {
     availableLanguage: 'English',
   },
   sameAs: [
-    'https://www.instagram.com/weareedt',
-    'https://www.linkedin.com/company/weareedt',
+    'https://www.instagram.com/weareedt/',
+    'https://www.linkedin.com/company/31284467/',
+    'https://www.youtube.com/@weareEDT',
   ],
   areaServed: ['Malaysia', 'Singapore', 'Qatar', 'Hong Kong', 'Southeast Asia'],
   knowsAbout: [

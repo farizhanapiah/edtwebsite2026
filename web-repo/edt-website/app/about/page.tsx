@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -71,28 +72,21 @@ const principles = [
   },
 ]
 
-const capabilities = [
-  'Unity & Unreal Engine development',
-  'TouchDesigner interactive systems',
-  'AI pipeline architecture (OpenAI, Pinecone, Supabase, N8N)',
-  'ElevenLabs TTS integration',
-  'Projection mapping (Epson 7K–10K ANSI)',
-  'XR hardware: Meta Quest 3, LiDAR, LED P2.0–P2.5',
-  '3D modelling & digital twins',
-]
-
-const awards = [
-  { year: '2025', award: 'Management Initiative of the Year', body: 'Malaysia' },
-  { year: '2024', award: 'Excellence Awards', body: 'Malaysia' },
-  { year: '2024', award: 'Book of Records', body: 'Malaysia' },
-]
-
-const partnerGroups = [
-  { label: 'Universities', names: "UiTM · Taylor\'s · MMU · Sunway" },
-  { label: 'Government', names: 'MDEC · MCMC · Sarawak Tourism Board' },
-  { label: 'Corporates', names: 'CelcomDigi · Petrosains · TNB · Prudential' },
-  { label: 'Creative Spaces', names: 'GMBB' },
-  { label: 'International', names: 'Doha · Hong Kong · Singapore · Japan' },
+const clients = [
+  { name: 'Petronas',          src: '/images/clients/client_petronas.png' },
+  { name: 'AirAsia',           src: '/images/clients/client_airasia.png' },
+  { name: 'Malaysia Airlines', src: '/images/clients/client_malaysiaairlines.png' },
+  { name: 'Sunway',            src: '/images/clients/client_sunway.png' },
+  { name: 'MCMC',              src: '/images/clients/clients_mcmc.png' },
+  { name: 'New Balance',       src: '/images/clients/clients_newbalance.png' },
+  { name: 'Prudential',        src: '/images/clients/clients_prudential.png' },
+  { name: 'Vans',              src: '/images/clients/clients_vans.png' },
+  { name: 'Think City',        src: '/images/clients/clients_thinkcity.png' },
+  { name: 'Accenture',         src: '/images/clients/clients_accenture.png' },
+  { name: 'CIMB Bank',         src: '/images/clients/clients_cimbbank.png' },
+  { name: 'Maybank',           src: '/images/clients/clients_maybank.png' },
+  { name: 'Public Bank',       src: '/images/clients/clients_publicbank.png' },
+  { name: 'SAFI',              src: '/images/clients/clients_safi.png' },
 ]
 
 export default function AboutPage() {
@@ -122,42 +116,19 @@ export default function AboutPage() {
       {/* ── MISSION ──────────────────────────────────────────────────── */}
       <section className="bg-edt-black py-24 border-b border-white/10">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-            <div>
-              <span className="font-sans text-[11px] font-semibold tracking-[0.12em] uppercase text-edt-blue mb-4 block">
-                Who We Are
-              </span>
-              <p className="font-sans text-[17px] text-white/80 leading-relaxed mb-4">
-                Experiential Design Team (EDT) is a Kuala Lumpur-based creative technology company
-                founded to close the gap between imagination and experience. We operate at the
-                intersection of experiential design, emerging technology, business strategy, and
-                immersive storytelling.
-              </p>
-              <p className="font-sans text-[17px] text-white/80 leading-relaxed">
-                We don&apos;t just build activations. We build platforms, pipelines, and ecosystems.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-px bg-white/10">
-              {[
-                { n: '50+', l: 'Projects Delivered' },
-                { n: '12', l: 'Countries Reached' },
-                { n: '3', l: 'National Awards' },
-                { n: '6', l: 'Proprietary Products' },
-              ].map((s) => (
-                <div key={s.l} className="bg-edt-black p-8 text-center">
-                  <div
-                    className="font-display text-white mb-1"
-                    style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 1 }}
-                  >
-                    {s.n}
-                  </div>
-                  <p className="font-sans text-[12px] font-semibold tracking-wider uppercase text-edt-grey">
-                    {s.l}
-                  </p>
-                </div>
-              ))}
-            </div>
+          <div className="max-w-[800px]">
+            <span className="font-sans text-[11px] font-semibold tracking-[0.12em] uppercase text-edt-blue mb-4 block">
+              Who We Are
+            </span>
+            <p className="font-sans text-[17px] text-white/80 leading-relaxed mb-4">
+              Experiential Design Team (EDT) is a Kuala Lumpur-based creative technology company
+              founded to close the gap between imagination and experience. We operate at the
+              intersection of experiential design, emerging technology, business strategy, and
+              immersive storytelling.
+            </p>
+            <p className="font-sans text-[17px] text-white/80 leading-relaxed">
+              We don&apos;t just build activations. We build platforms, pipelines, and ecosystems.
+            </p>
           </div>
         </div>
       </section>
@@ -195,78 +166,42 @@ export default function AboutPage() {
           </span>
           <h2 className="display-md text-white mb-16">Our Team</h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/10">
-            <div className="bg-edt-black p-8 lg:p-10">
-              <div className="mb-6">
-                {/* Avatar placeholder */}
-                <div className="w-20 h-20 bg-edt-blue/10 border border-edt-blue/20 flex items-center justify-center mb-6">
-                  <span className="font-display text-edt-blue text-2xl">FH</span>
-                </div>
-                <span className="edt-badge mb-3 inline-block">Founder</span>
-                <h3 className="font-display text-white text-2xl uppercase mb-1">Fariz Hanapiah</h3>
-                <p className="font-sans text-[13px] text-edt-blue mb-4">
-                  Creative Tech Director
-                </p>
-                <p className="font-sans text-[15px] text-white/70 leading-relaxed">
-                  A creative technologist and entrepreneur building at the intersection of immersive
-                  technology and intelligent automation. Fariz has led EDT to deliver projects
-                  across Malaysia, Singapore, the Middle East, and beyond.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-edt-black p-8 lg:p-10">
-              <h4 className="font-sans text-[11px] font-semibold tracking-widest uppercase text-edt-grey mb-6">
-                Core Capabilities
-              </h4>
-              <ul className="flex flex-col gap-3">
-                {capabilities.map((c) => (
-                  <li key={c} className="flex items-start gap-3">
-                    <span className="text-edt-blue mt-1 text-xs flex-shrink-0">→</span>
-                    <span className="font-sans text-[14px] text-white/70">{c}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="border border-white/10 bg-edt-black p-12 lg:p-16 text-center max-w-[680px] mx-auto">
+            <span className="edt-badge mb-6 inline-block">Coming Soon</span>
+            <h3 className="display-sm text-white mb-4">We&apos;re growing the team.</h3>
+            <p className="font-sans text-[15px] text-edt-grey leading-relaxed">
+              Profiles will live here as we expand.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* ── RECOGNITION ──────────────────────────────────────────────── */}
-      <section className="bg-surface py-20 border-b border-white/10">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
+      {/* ── CLIENTS ──────────────────────────────────────────────────── */}
+      <section className="bg-white py-20 lg:py-24 border-y border-black/10">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-20 mb-12">
           <span className="font-sans text-[11px] font-semibold tracking-[0.12em] uppercase text-edt-blue mb-4 block">
-            Recognition
+            Clients
           </span>
-          <h2 className="display-md text-white mb-12">Awards</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/10">
-            {awards.map((a) => (
-              <div key={a.award} className="bg-surface p-8">
-                <span className="font-sans text-[11px] font-semibold tracking-widest uppercase text-edt-blue mb-3 block">
-                  {a.year}
-                </span>
-                <h3 className="font-sans text-[16px] font-semibold text-white mb-1">{a.award}</h3>
-                <p className="font-sans text-[13px] text-edt-grey">{a.body}</p>
-              </div>
-            ))}
-          </div>
+          <h2 className="display-md text-edt-black max-w-[700px]">
+            Trusted by Malaysia&apos;s most recognised brands.
+          </h2>
         </div>
-      </section>
 
-      {/* ── PARTNERS ─────────────────────────────────────────────────── */}
-      <section className="bg-edt-black py-20 border-b border-white/10">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
-          <span className="font-sans text-[11px] font-semibold tracking-[0.12em] uppercase text-edt-blue mb-4 block">
-            Network
-          </span>
-          <h2 className="display-md text-white mb-12">Our Partners & Collaborators</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {partnerGroups.map((g) => (
-              <div key={g.label} className="border border-white/10 p-6">
-                <p className="font-sans text-[11px] font-semibold tracking-widest uppercase text-edt-blue mb-3">
-                  {g.label}
-                </p>
-                <p className="font-sans text-[14px] text-white/70">{g.names}</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-px bg-black/10 border border-black/10">
+            {clients.map((c) => (
+              <div
+                key={c.name}
+                className="bg-white p-8 flex items-center justify-center"
+              >
+                <Image
+                  src={c.src}
+                  alt={c.name}
+                  width={160}
+                  height={48}
+                  className="h-10 lg:h-12 w-auto object-contain"
+                  unoptimized
+                />
               </div>
             ))}
           </div>

@@ -52,15 +52,6 @@ const pastProjects = [
   },
 ]
 
-const equipment = [
-  { item: 'Projectors', detail: 'Epson 7,000 – 10,000 ANSI lumen, laser-phosphor, multiple units configured per project' },
-  { item: 'Software', detail: 'TouchDesigner for real-time rendering, notch for live visual effects' },
-  { item: 'Mapping Tools', detail: 'MadMapper, Resolume for warping and blending' },
-  { item: 'Content Production', detail: 'Custom motion graphics, 3D mapping, archival integration, generative art' },
-  { item: 'Structural', detail: 'Rigging towers, projection cradles, weatherproofing for outdoor deployments' },
-  { item: 'Timecode & Sync', detail: 'SMPTE timecode sync for live music events and multi-projector alignment' },
-]
-
 const faqs = [
   {
     q: 'What surfaces can be projection mapped?',
@@ -163,30 +154,8 @@ export default function ProjectionMappingPage() {
         </div>
       </section>
 
-      {/* EQUIPMENT */}
-      <section className="bg-edt-black py-20 lg:py-28 border-b border-white/10">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
-          <span className="font-sans text-[11px] font-semibold tracking-[0.12em] uppercase text-edt-blue mb-4 block">
-            Equipment & Software
-          </span>
-          <h2 className="display-md text-white max-w-[560px] mb-16">
-            The Tools We Use
-          </h2>
-          <div className="border border-white/10 divide-y divide-white/10">
-            {equipment.map((row) => (
-              <div key={row.item} className="grid grid-cols-1 md:grid-cols-3 gap-4 px-8 py-6">
-                <span className="font-display text-[12px] uppercase tracking-[0.08em] text-edt-grey">
-                  {row.item}
-                </span>
-                <span className="font-sans text-[15px] text-white md:col-span-2">{row.detail}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* FAQ */}
-      <section className="bg-surface py-20 lg:py-28 border-b border-white/10">
+      <section className="bg-edt-black py-20 lg:py-28 border-b border-white/10">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
           <span className="font-sans text-[11px] font-semibold tracking-[0.12em] uppercase text-edt-blue mb-4 block">
             FAQ

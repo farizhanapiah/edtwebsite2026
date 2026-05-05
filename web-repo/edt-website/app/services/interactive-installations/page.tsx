@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import YouTubeEmbed from '@/components/YouTubeEmbed'
 
 export const metadata: Metadata = {
   title: 'Interactive Installations Malaysia | LED Walls & Immersive Rooms | EDT',
@@ -56,6 +57,7 @@ const featuredProjects = [
   {
     name: 'PNB 118 Stories Interactive Wall',
     client: 'PNB Merdeka Ventures',
+    youtubeId: 'ezLgmijHWRI',
     description:
       'A large-scale multi-panel interactive LED installation inside the PNB 118 skyscraper visitor experience. Visitors navigate 118 floors of Malaysian history through a touch-driven LED wall, with layered media, archival footage, and generative animations.',
     tags: ['LED Wall', 'Touch Display', 'TouchDesigner', 'Permanent Installation'],
@@ -63,19 +65,43 @@ const featuredProjects = [
   {
     name: 'New Balance Immersive Room',
     client: 'New Balance Malaysia',
+    youtubeId: 'drOAYjmo928',
     description:
       'A 360° projection-mapped immersive room experience for New Balance\u2019s flagship retail activation. Motion sensors tracked visitor movement, triggering real-time generative visuals that responded to how visitors moved through the space.',
     tags: ['Immersive Room', 'Motion Reactive', 'Kinect', 'Retail Activation'],
   },
+  {
+    name: 'AirAsia Founders’ Gallery',
+    client: 'AirAsia',
+    youtubeId: 'Y9w3nrGThGs',
+    description:
+      'A permanent corporate heritage gallery combining interactive walls, AR storytelling, and AI-generated imagery to chronicle AirAsia’s founding story. Visitors trigger archival footage, founder interviews, and dynamic data visualisations through gesture and proximity.',
+    tags: ['Interactive Wall', 'AR', 'AI Imagery', 'Permanent Installation'],
+  },
+  {
+    name: 'Sunway Wishing Well',
+    client: 'Sunway',
+    youtubeId: 'uCV_ouHd1_w',
+    description:
+      'An AR-augmented LED installation that turns a public wishing well into a participatory brand moment. Guests scan a marker to release animated wishes onto the LED surface, blending physical ritual with real-time interactive visuals.',
+    tags: ['AR', 'Interactive LED', 'Brand Activation', 'Public Installation'],
+  },
+  {
+    name: 'EEG Brainwave Art',
+    client: 'Prudential SG',
+    youtubeId: 'GKMJ47xKQ3c',
+    description:
+      'A biometric interactive installation in Singapore that translates visitors’ live EEG brainwave data into generative visual art. Each participant produces a unique, real-time piece driven by their attention and relaxation states — a science-forward expression of personal wellbeing.',
+    tags: ['EEG', 'Generative Art', 'Biometric', 'Brand Activation'],
+  },
 ]
 
 const techStack = [
-  { item: 'Software', detail: 'TouchDesigner, Unity 3D, Notch' },
-  { item: 'LED Panels', detail: 'P2.0 – P2.5 indoor pitch, scalable configurations' },
-  { item: 'Sensors', detail: 'Microsoft Kinect, SICK LiDAR, depth cameras' },
-  { item: 'Display Hardware', detail: 'Multi-touch overlays, transparent OLED, holographic fans' },
+  { item: 'Software', detail: 'TouchDesigner, Unity 3D, Unreal Engine, Web Interface' },
+  { item: 'Sensors', detail: 'Depth Sensors, Kinect, LiDAR' },
+  { item: 'Displays', detail: 'Multi-touch Displays, Holographic Displays, Transparent OLED' },
   { item: 'Content Delivery', detail: 'Real-time rendering, CMS-driven content management' },
-  { item: 'Structural', detail: 'Custom aluminium rigging, pixel-map calibration' },
+  { item: 'Structural', detail: 'Fit Out Services, Fabrication, Custom Rigging, 3D Printing Service' },
 ]
 
 const faqs = [
@@ -97,8 +123,25 @@ export default function InteractiveInstallationsPage() {
   return (
     <>
       {/* HERO */}
-      <section className="bg-edt-black pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-white/10 pixel-grid">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
+      <section className="relative bg-edt-black pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-white/10 overflow-hidden">
+        {/* Background YouTube video — fills the section, scaled to cover */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/ezLgmijHWRI?autoplay=1&mute=1&loop=1&playlist=ezLgmijHWRI&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0&iv_load_policy=3"
+            title=""
+            tabIndex={-1}
+            allow="autoplay; encrypted-media; picture-in-picture"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[max(100%,calc(100vh*16/9))] h-[max(100%,calc(100vw*9/16))] min-w-full min-h-full border-0 pointer-events-none"
+          />
+        </div>
+
+        {/* Dark gradient overlay — keeps headline + body legible */}
+        <div className="absolute inset-0 bg-gradient-to-r from-edt-black/85 via-edt-black/65 to-edt-black/30 pointer-events-none" aria-hidden="true" />
+
+        {/* Subtle pixel-grid kept on top of overlay for texture */}
+        <div className="absolute inset-0 pixel-grid opacity-40 pointer-events-none" aria-hidden="true" />
+
+        <div className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-20">
           <nav className="flex items-center gap-2 text-[12px] text-edt-grey mb-8">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <span>/</span>
@@ -173,29 +216,37 @@ export default function InteractiveInstallationsPage() {
             Installations We Have Delivered
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {featuredProjects.map((proj) => (
-              <div key={proj.name} className="border border-white/10 p-8">
-                <div className="window-bar mb-6">
-                  <span className="window-dot" />
-                  <span className="window-dot" />
-                  <span className="window-dot" />
+            {featuredProjects.map((proj, i) => {
+              const isLastOdd =
+                i === featuredProjects.length - 1 && featuredProjects.length % 2 === 1
+              return (
+                <div
+                  key={proj.name}
+                  className={`border border-white/10 p-8 ${isLastOdd ? 'lg:col-span-2 lg:max-w-[calc(50%-1rem)] lg:w-full' : ''}`}
+                >
+                  <YouTubeEmbed videoId={proj.youtubeId} title={proj.name} className="mb-6" />
+                  <div className="window-bar mb-6">
+                    <span className="window-dot" />
+                    <span className="window-dot" />
+                    <span className="window-dot" />
+                  </div>
+                  <p className="font-sans text-[11px] tracking-[0.1em] uppercase text-edt-grey mb-2">
+                    {proj.client}
+                  </p>
+                  <h3 className="font-display text-[18px] uppercase tracking-[0.06em] text-white mb-4">
+                    {proj.name}
+                  </h3>
+                  <p className="font-sans text-[15px] text-edt-grey leading-relaxed mb-6">
+                    {proj.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {proj.tags.map((tag) => (
+                      <span key={tag} className="edt-badge">{tag}</span>
+                    ))}
+                  </div>
                 </div>
-                <p className="font-sans text-[11px] tracking-[0.1em] uppercase text-edt-grey mb-2">
-                  {proj.client}
-                </p>
-                <h3 className="font-display text-[18px] uppercase tracking-[0.06em] text-white mb-4">
-                  {proj.name}
-                </h3>
-                <p className="font-sans text-[15px] text-edt-grey leading-relaxed mb-6">
-                  {proj.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {proj.tags.map((tag) => (
-                    <span key={tag} className="edt-badge">{tag}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
           <div className="mt-10">
             <Link href="/work" className="btn-ghost">View All Projects →</Link>

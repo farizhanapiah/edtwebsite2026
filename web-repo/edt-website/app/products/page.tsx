@@ -20,6 +20,7 @@ const products = [
     highlight: 'Multiplayer MR games, spatial tracking, no headset needed',
     href: '/products/riaReality',
     accent: '#2D2DFF',
+    image: '/images/products/riareality_thumb.jpg',
   },
   {
     badge: 'AI Product',
@@ -29,6 +30,7 @@ const products = [
     highlight: 'RAG knowledge base, 86" Stellarlink display, ElevenLabs TTS',
     href: '/products/hoomans-ai',
     accent: '#00E5FF',
+    image: '/images/products/hoomans-ai_thumb.jpg',
   },
   {
     badge: 'AI Photobooth',
@@ -38,6 +40,7 @@ const products = [
     highlight: 'Real-time AI photo generation, brand-matched themes, instant sharing',
     href: '/products/mimpilab',
     accent: '#2D2DFF',
+    image: '/images/products/mimpilab_thumb.jpg',
   },
   {
     badge: 'AR Heritage',
@@ -47,6 +50,7 @@ const products = [
     highlight: '12+ countries reached, 1,442 AR impressions, AI real-time conversation',
     href: '/products/cheritar',
     accent: '#FF9900',
+    image: '/images/cheritar-think-city/cheritar-think-city_thumb.jpg',
   },
   {
     badge: 'VR Wellness',
@@ -56,6 +60,7 @@ const products = [
     highlight: 'AI-personalized sessions, localized SEA content, App + VR + Space',
     href: '/products/wayangmind',
     accent: '#00BFA5',
+    image: '/images/products/wayangmind_thumb.jpg',
   },
   {
     badge: 'Virtual Production',
@@ -65,6 +70,7 @@ const products = [
     highlight: 'Unreal Engine environments, PTZ camera sync, minimal setup',
     href: '/products/arvena',
     accent: '#FF2D2D',
+    image: '/images/products/arvena_thumb.jpg',
   },
 ]
 
@@ -72,8 +78,21 @@ export default function ProductsPage() {
   return (
     <>
       {/* HERO */}
-      <section className="bg-edt-black pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-white/10 pixel-grid">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
+      <section className="relative overflow-hidden bg-edt-black pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-white/10 pixel-grid">
+        {/* YouTube background — autoplay, muted, looped, no chrome */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/G5KJO-B_7mw?autoplay=1&mute=1&loop=1&playlist=G5KJO-B_7mw&controls=0&modestbranding=1&playsinline=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1"
+            title="EDT products background"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[max(100%,177.78vh)] h-[max(100%,56.25vw)] min-w-full min-h-full"
+          />
+        </div>
+
+        {/* Dark gradient overlay — left-side for text legibility, fades right to reveal video */}
+        <div className="absolute inset-0 bg-gradient-to-r from-edt-black/85 via-edt-black/60 to-edt-black/30 pointer-events-none" />
+
+        <div className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-20">
           <span className="font-sans text-[11px] font-semibold tracking-[0.12em] uppercase text-edt-blue mb-4 block">
             Our Products
           </span>
@@ -105,6 +124,16 @@ export default function ProductsPage() {
                   <span className="ml-2 font-sans text-[10px] font-semibold tracking-widest uppercase text-white/30">
                     {p.title.toLowerCase()}.exe
                   </span>
+                </div>
+
+                {/* Thumbnail */}
+                <div className="h-44 bg-edt-blue/10 pixel-grid relative overflow-hidden">
+                  <img
+                    src={p.image}
+                    alt={`${p.title} thumbnail`}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform"
+                  />
                 </div>
 
                 <div className="p-6 lg:p-8 flex flex-col flex-1 gap-4">

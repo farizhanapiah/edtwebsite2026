@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import FormspreeForm from '@/components/FormspreeForm'
 
 export const metadata: Metadata = {
   title: "Agency Partners | Strengthen Your Pitch with EDT's XR Capability",
@@ -251,9 +252,12 @@ export default function PartnersPage() {
               </div>
             </div>
             <div>
-              <form action="https://formspree.io/f/maqvqkpq" method="POST" className="space-y-5">
+              <FormspreeForm
+                endpoint="https://formspree.io/f/maqvqkpq"
+                thankYouType="partner"
+                className="space-y-5"
+              >
                 <input type="hidden" name="_subject" value="New partner enquiry — EDT" />
-                <input type="hidden" name="_next" value="https://weareedt.com/thank-you?type=partner" />
                 <input
                   type="text"
                   name="_gotcha"
@@ -331,7 +335,7 @@ export default function PartnersPage() {
                 >
                   Submit Partner Enquiry
                 </button>
-              </form>
+              </FormspreeForm>
             </div>
           </div>
         </div>

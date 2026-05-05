@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import HeroShowreel from '@/components/HeroShowreel'
+import FormspreeForm from '@/components/FormspreeForm'
 
 export const metadata: Metadata = {
   title: 'EDT | Immersive AR VR MR Experiences & AI Avatars Malaysia',
@@ -24,7 +25,6 @@ const organizationSchema = {
   url: 'https://weareedt.com',
   logo: 'https://weareedt.com/favicon/web-app-manifest-512x512.png',
   telephone: '+60364115361',
-  email: 'hello@weareedt.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'A-3-13 Centrio Pantai Hillpark, Jalan Pantai Murni',
@@ -42,8 +42,9 @@ const organizationSchema = {
     'Immersive Events',
   ],
   sameAs: [
-    'https://www.instagram.com/edtmy',
-    'https://www.linkedin.com/company/edtmy',
+    'https://www.instagram.com/weareedt/',
+    'https://www.linkedin.com/company/31284467/',
+    'https://www.youtube.com/@weareEDT',
   ],
 }
 
@@ -546,9 +547,12 @@ export default function HomePage() {
 // ─── Inline Lead Form (server-rendered shell, action via /contact) ────────────
 function ContactForm() {
   return (
-    <form action="https://formspree.io/f/xjglgzav" method="POST" className="flex flex-col gap-4">
+    <FormspreeForm
+      endpoint="https://formspree.io/f/xjglgzav"
+      thankYouType="lead"
+      className="flex flex-col gap-4"
+    >
       <input type="hidden" name="_subject" value="New homepage lead — EDT" />
-      <input type="hidden" name="_next" value="https://weareedt.com/thank-you?type=lead" />
       <input
         type="text"
         name="_gotcha"
@@ -600,6 +604,6 @@ function ContactForm() {
       <button type="submit" className="btn-primary self-start">
         Let&apos;s Talk →
       </button>
-    </form>
+    </FormspreeForm>
   )
 }

@@ -18,6 +18,7 @@ const services = [
     desc: 'Build immersive worlds your audience can step into — on mobile, headset, or the open web.',
     href: '/services/ar-vr-mr-development',
     tags: ['WebAR', 'Native AR', 'VR Headsets', 'Mixed Reality'],
+    video: '/videos/services/ar-vr-mr-development.webm',
   },
   {
     num: '02',
@@ -25,6 +26,7 @@ const services = [
     desc: 'Bring your brand to life with intelligent, AI-powered holographic avatars.',
     href: '/services/ai-avatars-holograms',
     tags: ['Hoomans.ai', 'Stellarlink 86"', 'RAG Knowledge Base', 'ElevenLabs TTS'],
+    video: '/videos/services/ai-avatars-holograms.webm',
   },
   {
     num: '03',
@@ -32,6 +34,7 @@ const services = [
     desc: 'Replace physical sets with stunning Unreal Engine environments for live broadcast and content creation.',
     href: '/services/virtual-production',
     tags: ['ARVENA Platform', 'Unreal Engine', 'Live Streaming', 'PTZ Cameras'],
+    video: '/videos/services/virtual-production.webm',
   },
   {
     num: '04',
@@ -39,6 +42,7 @@ const services = [
     desc: 'Transform spaces into living brand experiences with LED walls, touch systems, and immersive rooms.',
     href: '/services/interactive-installations',
     tags: ['LED Walls', 'Touch Displays', 'Immersive Rooms', 'Motion Sensors'],
+    video: '/videos/services/interactive-installations.webm',
   },
   {
     num: '05',
@@ -46,6 +50,7 @@ const services = [
     desc: 'Turn any surface into a canvas — buildings, floors, stages, and curved structures.',
     href: '/services/projection-mapping',
     tags: ['Building Mapping', 'Stage Mapping', 'Epson 7K–10K ANSI', 'TouchDesigner'],
+    video: '/videos/services/projection-mapping.webm',
   },
   {
     num: '06',
@@ -53,6 +58,7 @@ const services = [
     desc: 'Full production packages for brand activations, exhibitions, and public experiences.',
     href: '/services/immersive-events',
     tags: ['Brand Activations', 'Exhibitions', 'Public Experiences', 'End-to-End Production'],
+    video: '/videos/services/immersive-events.webm',
   },
 ]
 
@@ -75,13 +81,24 @@ export default function ServicesPage() {
 
       {/* SERVICES LIST */}
       <section className="bg-edt-black py-0 border-b border-white/10">
-        {services.map((s, i) => (
+        {services.map((s) => (
           <Link
             key={s.href}
             href={s.href}
-            className={`block border-b border-white/10 group hover:bg-surface transition-colors ${i % 2 === 1 ? 'bg-surface/40' : ''}`}
+            className="relative block border-b border-white/10 group overflow-hidden"
           >
-            <div className="max-w-[1440px] mx-auto px-6 lg:px-20 py-10 lg:py-12 grid grid-cols-1 lg:grid-cols-[80px_1fr_200px] gap-6 items-start">
+            <video
+              src={s.video}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label={s.title}
+              className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-edt-black via-edt-black/80 to-edt-black/40" />
+            <div className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-20 py-10 lg:py-12 grid grid-cols-1 lg:grid-cols-[80px_1fr_200px] gap-6 items-start">
               <span className="font-sans text-[13px] font-semibold tracking-widest text-edt-blue/50">
                 {s.num}
               </span>
@@ -94,7 +111,7 @@ export default function ServicesPage() {
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {s.tags.map((t) => (
-                    <span key={t} className="font-sans text-[11px] text-white/40 border border-white/15 px-3 py-1">
+                    <span key={t} className="font-sans text-[11px] text-white/40 border border-white/15 px-3 py-1 bg-edt-black/40 backdrop-blur-sm">
                       {t}
                     </span>
                   ))}
