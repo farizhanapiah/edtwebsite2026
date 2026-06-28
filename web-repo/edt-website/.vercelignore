@@ -1,0 +1,11 @@
+# Vercel installs deps and builds on its servers — don't upload local artifacts.
+node_modules
+.next
+
+# Large case-study videos are gitignored (site uses YouTube embeds). Keep the
+# two showreel videos that the site actually serves.
+public/videos/**/*.mp4
+public/videos/**/*.mov
+!public/videos/edt-showreel-hero.mp4
+!public/videos/edt-showreel-2025.mp4
+public/images/sneakerlah-vr/sneakerlah-vr_gallery_video_01.mp4
