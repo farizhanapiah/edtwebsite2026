@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/partners', priority: 0.6, changeFrequency: 'monthly' },
     { path: '/contact', priority: 0.8, changeFrequency: 'monthly' },
     { path: '/blog', priority: 0.6, changeFrequency: 'weekly' },
+    { path: '/careers', priority: 0.7, changeFrequency: 'monthly' },
 
     // Case studies
     { path: '/work/metahrise', priority: 0.8, changeFrequency: 'monthly' },

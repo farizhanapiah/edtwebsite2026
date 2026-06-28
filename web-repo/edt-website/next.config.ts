@@ -26,6 +26,12 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: '/admin/:path*',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+        ],
+      },
+      {
         source: '/llms.txt',
         headers: [
           { key: 'Content-Type', value: 'text/plain; charset=utf-8' },

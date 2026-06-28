@@ -27,6 +27,11 @@ const variants = {
     heading: 'Welcome to the list.',
     body: 'EDT publishes new insights on AR, VR, AI and immersive design monthly. No spam — just the ideas worth reading.',
   },
+  application: {
+    badge: 'Application Received',
+    heading: 'Thanks for applying.',
+    body: "Your application is now in EDT's talent pool. We review every submission and will reach out if there's a fit — now or in future.",
+  },
 } as const
 
 type VariantKey = keyof typeof variants

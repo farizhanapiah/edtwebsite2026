@@ -23,6 +23,7 @@ const companyLinks = [
   { label: 'About', href: '/about' },
   { label: 'Work / Portfolio', href: '/work' },
   { label: 'Blog', href: '/blog' },
+  { label: 'Careers', href: '/careers' },
   { label: 'Partners', href: '/partners' },
   { label: 'Contact', href: '/contact' },
 ]
