@@ -8,7 +8,10 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/_next/', '/private/', '/admin/', '/d/'],
+        // NOTE: /d/ is intentionally NOT blocked here. Deck pages must stay
+        // crawlable so Google sees their `X-Robots-Tag: noindex` header and
+        // keeps them out of search. Blocking them would let bare URLs slip in.
+        disallow: ['/api/', '/_next/', '/private/', '/admin/'],
       },
       // Major search crawlers — explicit allow
       { userAgent: 'Googlebot', allow: '/' },

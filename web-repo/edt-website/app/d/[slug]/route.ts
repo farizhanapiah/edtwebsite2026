@@ -36,8 +36,9 @@ export async function GET(
     status: 200,
     headers: {
       'Content-Type': 'text/html; charset=utf-8',
-      'Cache-Control': 'public, max-age=300',
-      'X-Robots-Tag': 'noindex',
+      // Private client decks: never cache on shared/CDN caches, never index.
+      'Cache-Control': 'private, no-store',
+      'X-Robots-Tag': 'noindex, nofollow, noarchive, nosnippet',
     },
   })
 }

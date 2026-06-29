@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server'
+import { randomBytes } from 'crypto'
 import { createSupabaseServerClient } from '@/lib/supabase/server'
 import { createSupabaseAdminClient, DECKS_BUCKET, DECKS_TABLE } from '@/lib/supabase/admin'
 import { slugify } from '@/lib/types'
@@ -31,20 +32,22 @@ export async function POST(request: NextRequest) {
 
   const title = String(body.title || '').trim()
   const clientName = String(body.client_name || '').trim()
-  const slug = slugify(String(body.slug || '') || title)
+  const baseSlug = slugify(String(body.slug || '') || title)
 
   if (!title) {
     return NextResponse.json({ error: 'Title is required.' }, { status: 400 })
   }
-  if (!slug) {
+  if (!baseSlug) {
     return NextResponse.json({ error: 'Could not derive a valid slug.' }, { status: 400 })
   }
 
   const admin = createSupabaseAdminClient()
-  const filePath = `${slug}/index.html`
 
   // ---- Phase 1: sign ----
   if (body.phase === 'sign') {
+    // Append an unguessable token so share links can't be guessed/enumerated.
+    const slug = `${baseSlug}-${randomBytes(6).toString('hex')}`
+    const filePath = `${slug}/index.html`
     const { data: existing } = await admin
       .from(DECKS_TABLE)
       .select('id')
@@ -73,6 +76,10 @@ export async function POST(request: NextRequest) {
 
   // ---- Phase 2: commit ----
   if (body.phase === 'commit') {
+    // The client sends back the tokened slug from the sign phase as-is.
+    const slug = baseSlug
+    const filePath = `${slug}/index.html`
+
     // Confirm the file actually landed in storage before recording the row.
     const { data: list } = await admin.storage.from(DECKS_BUCKET).list(slug)
     const uploaded = list?.some((o) => o.name === 'index.html')

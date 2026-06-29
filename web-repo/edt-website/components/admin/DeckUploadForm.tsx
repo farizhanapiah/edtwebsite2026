@@ -144,7 +144,8 @@ export default function DeckUploadForm() {
           />
         </div>
         <p className="text-edt-grey/70 text-xs mt-2">
-          This becomes the public link you share with the client.
+          This becomes the public link you share with the client. A random code
+          is added to the end so the link can&apos;t be guessed.
         </p>
       </div>
 
