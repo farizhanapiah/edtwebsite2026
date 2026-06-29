@@ -3,6 +3,10 @@
 import { useState, type FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import { slugify } from '@/lib/types'
+import { createSupabaseBrowserClient } from '@/lib/supabase/client'
+
+const DECKS_BUCKET = 'decks'
+const MAX_DECK_BYTES = 25 * 1024 * 1024 // 25 MB
 
 export default function DeckUploadForm() {
   const router = useRouter()
@@ -20,26 +24,68 @@ export default function DeckUploadForm() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (submitting) return
+
+    const formEl = e.currentTarget
+    const fd = new FormData(formEl)
+    const clientName = String(fd.get('client_name') || '').trim()
+    const file = fd.get('file')
+
+    if (!(file instanceof File) || file.size === 0) {
+      setError('Please choose an .html file.')
+      return
+    }
+    if (file.size > MAX_DECK_BYTES) {
+      setError('File exceeds the 25 MB limit.')
+      return
+    }
+
     setSubmitting(true)
     setError(null)
 
-    const data = new FormData(e.currentTarget)
-    // Use the controlled slug (may differ from a stale field value).
-    data.set('slug', slug)
-
     try {
-      const res = await fetch('/api/admin/decks', { method: 'POST', body: data })
-      const json = await res.json().catch(() => null)
-      if (!res.ok) {
-        setError(json?.error || 'Upload failed. Please try again.')
+      // 1) Ask the server to validate + issue a one-time signed upload URL.
+      const signRes = await fetch('/api/admin/decks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phase: 'sign', title, slug, client_name: clientName }),
+      })
+      const sign = await signRes.json().catch(() => null)
+      if (!signRes.ok) {
+        setError(sign?.error || 'Upload failed. Please try again.')
         setSubmitting(false)
         return
       }
+
+      // 2) Upload the file straight to Supabase Storage (bypasses the function
+      //    body limit — this is what fixes large decks).
+      const supabase = createSupabaseBrowserClient()
+      const { error: upErr } = await supabase.storage
+        .from(DECKS_BUCKET)
+        .uploadToSignedUrl(sign.path, sign.token, file, { contentType: 'text/html' })
+      if (upErr) {
+        setError(upErr.message || 'Storage upload failed.')
+        setSubmitting(false)
+        return
+      }
+
+      // 3) Record the deck row.
+      const commitRes = await fetch('/api/admin/decks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phase: 'commit', title, slug: sign.slug, client_name: clientName }),
+      })
+      const commit = await commitRes.json().catch(() => null)
+      if (!commitRes.ok) {
+        setError(commit?.error || 'Could not save the deck. Please try again.')
+        setSubmitting(false)
+        return
+      }
+
       // Reset and refresh the list.
       setTitle('')
       setSlug('')
       setSlugEdited(false)
-      e.currentTarget.reset()
+      formEl.reset()
       setSubmitting(false)
       router.refresh()
     } catch {

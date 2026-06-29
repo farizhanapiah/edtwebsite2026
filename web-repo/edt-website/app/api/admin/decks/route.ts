@@ -5,8 +5,6 @@ import { slugify } from '@/lib/types'
 
 export const dynamic = 'force-dynamic'
 
-const MAX_DECK_BYTES = 25 * 1024 * 1024 // 25 MB
-
 async function requireUser() {
   const supabase = await createSupabaseServerClient()
   const {
@@ -15,79 +13,91 @@ async function requireUser() {
   return user
 }
 
-// Upload a new pitch deck (HTML) and create its library record.
+// The deck HTML can be up to 25 MB — far above Vercel's ~4.5 MB function body
+// limit — so the browser uploads it DIRECTLY to Supabase Storage. This endpoint
+// only handles small JSON metadata, in two phases:
+//   phase 'sign'   → validate + return a one-time signed upload URL
+//   phase 'commit' → after the browser uploads, create the library row
 export async function POST(request: NextRequest) {
   const user = await requireUser()
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
-  const form = await request.formData()
-  const title = String(form.get('title') || '').trim()
-  const clientName = String(form.get('client_name') || '').trim()
-  const rawSlug = String(form.get('slug') || '').trim()
-  const file = form.get('file')
+  const body = await request.json().catch(() => null)
+  if (!body || typeof body !== 'object') {
+    return NextResponse.json({ error: 'Invalid request.' }, { status: 400 })
+  }
+
+  const title = String(body.title || '').trim()
+  const clientName = String(body.client_name || '').trim()
+  const slug = slugify(String(body.slug || '') || title)
 
   if (!title) {
     return NextResponse.json({ error: 'Title is required.' }, { status: 400 })
   }
-  if (!(file instanceof File) || file.size === 0) {
-    return NextResponse.json({ error: 'An HTML file is required.' }, { status: 400 })
-  }
-  const isHtml =
-    file.type === 'text/html' || file.name.toLowerCase().endsWith('.html') ||
-    file.name.toLowerCase().endsWith('.htm')
-  if (!isHtml) {
-    return NextResponse.json({ error: 'Only .html files are allowed.' }, { status: 400 })
-  }
-  if (file.size > MAX_DECK_BYTES) {
-    return NextResponse.json({ error: 'File exceeds the 25 MB limit.' }, { status: 400 })
-  }
-
-  const slug = slugify(rawSlug || title)
   if (!slug) {
     return NextResponse.json({ error: 'Could not derive a valid slug.' }, { status: 400 })
   }
 
   const admin = createSupabaseAdminClient()
-
-  // Reject duplicate slugs early for a clear error.
-  const { data: existing } = await admin
-    .from(DECKS_TABLE)
-    .select('id')
-    .eq('slug', slug)
-    .maybeSingle()
-  if (existing) {
-    return NextResponse.json(
-      { error: `Slug "${slug}" is already in use. Choose a different one.` },
-      { status: 409 }
-    )
-  }
-
   const filePath = `${slug}/index.html`
-  const buffer = Buffer.from(await file.arrayBuffer())
 
-  const { error: uploadError } = await admin.storage
-    .from(DECKS_BUCKET)
-    .upload(filePath, buffer, { contentType: 'text/html', upsert: false })
-  if (uploadError) {
-    return NextResponse.json({ error: uploadError.message }, { status: 500 })
-  }
+  // ---- Phase 1: sign ----
+  if (body.phase === 'sign') {
+    const { data: existing } = await admin
+      .from(DECKS_TABLE)
+      .select('id')
+      .eq('slug', slug)
+      .maybeSingle()
+    if (existing) {
+      return NextResponse.json(
+        { error: `Slug "${slug}" is already in use. Choose a different one.` },
+        { status: 409 }
+      )
+    }
 
-  const { error: insertError } = await admin.from(DECKS_TABLE).insert({
-    slug,
-    title,
-    client_name: clientName || null,
-    file_path: filePath,
-    created_by: user.id,
-  })
-  if (insertError) {
-    // Roll back the orphaned upload.
+    // Clear any stale object from a previous failed attempt, then sign.
     await admin.storage.from(DECKS_BUCKET).remove([filePath])
-    return NextResponse.json({ error: insertError.message }, { status: 500 })
+    const { data, error } = await admin.storage
+      .from(DECKS_BUCKET)
+      .createSignedUploadUrl(filePath)
+    if (error || !data) {
+      return NextResponse.json(
+        { error: error?.message || 'Could not prepare the upload.' },
+        { status: 500 }
+      )
+    }
+    return NextResponse.json({ slug, path: filePath, token: data.token })
   }
 
-  return NextResponse.json({ ok: true, slug })
+  // ---- Phase 2: commit ----
+  if (body.phase === 'commit') {
+    // Confirm the file actually landed in storage before recording the row.
+    const { data: list } = await admin.storage.from(DECKS_BUCKET).list(slug)
+    const uploaded = list?.some((o) => o.name === 'index.html')
+    if (!uploaded) {
+      return NextResponse.json(
+        { error: 'Upload not found. Please try again.' },
+        { status: 400 }
+      )
+    }
+
+    const { error: insertError } = await admin.from(DECKS_TABLE).insert({
+      slug,
+      title,
+      client_name: clientName || null,
+      file_path: filePath,
+      created_by: user.id,
+    })
+    if (insertError) {
+      await admin.storage.from(DECKS_BUCKET).remove([filePath])
+      return NextResponse.json({ error: insertError.message }, { status: 500 })
+    }
+    return NextResponse.json({ ok: true, slug })
+  }
+
+  return NextResponse.json({ error: 'Unknown phase.' }, { status: 400 })
 }
 
 // Delete a deck record and its stored file.
