@@ -3,7 +3,7 @@ import Link from 'next/link'
 import YouTubeEmbed from '@/components/YouTubeEmbed'
 
 export const metadata: Metadata = {
-  title: 'Interactive Installations Malaysia | LED Walls & Immersive Rooms | EDT',
+  title: 'Interactive Installations Malaysia | LED Walls & Immersive Rooms',
   description: 'Transform spaces with LED walls, touch displays, EEG systems, and immersive rooms. EDT builds interactive installations for brand events, exhibitions, and permanent retail.',
 }
 

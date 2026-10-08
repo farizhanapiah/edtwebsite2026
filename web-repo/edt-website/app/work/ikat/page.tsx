@@ -3,7 +3,7 @@ import Link from 'next/link'
 import YouTubeEmbed from '@/components/YouTubeEmbed'
 
 export const metadata: Metadata = {
-  title: 'IKAT Malaysia Case Study | Immersive Textile Exhibition | EDT',
+  title: 'IKAT Malaysia Case Study | Immersive Textile Exhibition',
   description:
     'How EDT brought Malaysian textile heritage to life — RM 3.2M in media value, 5,822 visitors, 382,720 social reach, across 3 cities.',
   alternates: {

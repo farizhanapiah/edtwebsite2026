@@ -21,7 +21,11 @@ export function createSupabaseAdminClient() {
 // Storage bucket names (created in the Supabase dashboard).
 export const DECKS_BUCKET = 'decks'
 export const CVS_BUCKET = 'cvs'
+export const BLOG_BUCKET = 'blog'
 
 // Table for the pitch-deck uploader. Named separately from the pre-existing
 // `decks` table (a different system) so the two never collide.
 export const DECKS_TABLE = 'deck_uploads'
+
+// Table for blog posts managed from /admin/blog.
+export const BLOG_TABLE = 'blog_posts'

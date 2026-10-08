@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Government & GovTech Immersive Experiences Malaysia | EDT',
+  title: 'Government & GovTech Immersive Experiences Malaysia',
   description:
     "EDT builds digital transformation and public engagement experiences aligned with Malaysia's national digital agenda — for MCMC, MDEC, and government agencies.",
 }

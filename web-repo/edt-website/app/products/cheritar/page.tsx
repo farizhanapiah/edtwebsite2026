@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'CheritAR | AI-Powered AR Heritage Platform Malaysia | EDT',
+  title: 'CheritAR | AI-Powered AR Heritage Platform Malaysia',
   description: "CheritAR gives historical landmarks a voice. Scan a site, talk to its building. AI-powered AR avatars for Malaysia\u2019s heritage tourism.",
 }
 

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import YouTubeEmbed from '@/components/YouTubeEmbed'
 
 export const metadata: Metadata = {
-  title: 'Immersive Events Malaysia | Brand Activations & Experiential Production | EDT',
+  title: 'Immersive Events Malaysia | Brand Activations & Experiential Production',
   description: 'End-to-end immersive event production. EDT delivers brand activations, exhibitions, and public experiences — from concept to post-event.',
 }
 

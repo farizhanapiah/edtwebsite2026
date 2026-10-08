@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Hoomans.ai | AI Holographic Avatar Platform Malaysia | EDT',
+  title: 'Hoomans.ai | AI Holographic Avatar Platform Malaysia',
   description: 'Hoomans.ai brings intelligent AI avatars to life on 86" Stellarlink holographic displays. Custom knowledge base, real-time voice, and client dashboard.',
 }
 

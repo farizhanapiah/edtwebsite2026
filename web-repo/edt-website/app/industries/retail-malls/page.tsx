@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Retail & Mall Immersive Experiences Malaysia | AI Photobooth & AR | EDT',
+  title: 'Retail & Mall Immersive Experiences Malaysia | AI Photobooth & AR',
   description:
     'EDT increases dwell time, engagement, and social sharing for Malaysian shopping malls and retail brands with AI photobooths and interactive AR.',
 }

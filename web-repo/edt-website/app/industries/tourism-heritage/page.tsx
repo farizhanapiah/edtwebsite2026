@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Tourism & Heritage Immersive Experiences Malaysia | AR Heritage | EDT',
+  title: 'Tourism & Heritage Immersive Experiences Malaysia | AR Heritage',
   description:
     'EDT brings historical sites, cultural landmarks, and tourism attractions to life with AR, VR, and AI avatars for domestic and international visitors.',
 }

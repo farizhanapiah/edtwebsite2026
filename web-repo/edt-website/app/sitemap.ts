@@ -1,8 +1,11 @@
 import type { MetadataRoute } from 'next'
+import { getLivePosts } from '@/lib/blog'
 
 const SITE_URL = 'https://weareedt.com'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 3600
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date()
 
   const routes: Array<{ path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] }> = [
@@ -52,10 +55,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/industries/tourism-heritage', priority: 0.6, changeFrequency: 'monthly' },
   ]
 
-  return routes.map(({ path, priority, changeFrequency }) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified,
-    changeFrequency,
-    priority,
-  }))
+  // Live blog posts from /admin/blog. Never let a DB hiccup break the sitemap.
+  const posts = await getLivePosts().catch(() => [])
+
+  return [
+    ...routes.map(({ path, priority, changeFrequency }) => ({
+      url: `${SITE_URL}${path}`,
+      lastModified,
+      changeFrequency,
+      priority,
+    })),
+    // Posts copying an existing page (canonical_path set) stay out of the sitemap.
+    ...posts.filter((post) => !post.canonical_path).map((post) => ({
+      url: `${SITE_URL}/blog/${post.slug}`,
+      lastModified: new Date(post.updated_at),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    })),
+  ]
 }

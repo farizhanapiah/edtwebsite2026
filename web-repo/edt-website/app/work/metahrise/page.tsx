@@ -3,7 +3,7 @@ import Link from 'next/link'
 import YouTubeEmbed from '@/components/YouTubeEmbed'
 
 export const metadata: Metadata = {
-  title: 'MetaHRise Case Study | VR Onboarding for MCMC | EDT',
+  title: 'MetaHRise Case Study | VR Onboarding for MCMC',
   description:
     "How EDT built MetaHRise for MCMC — a multiplayer VR onboarding game that achieved 93% satisfaction, 40% efficiency gain, and set the Malaysia Book of Records.",
   alternates: {

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import YouTubeEmbed from '@/components/YouTubeEmbed'
 
 export const metadata: Metadata = {
-  title: 'New Balance Grey Day | AR + Immersive Room | EDT',
+  title: 'New Balance Grey Day | AR + Immersive Room',
   description:
     "EDT created an AR try-on experience and immersive brand room for New Balance's Grey Day activation in Malaysia.",
   alternates: {

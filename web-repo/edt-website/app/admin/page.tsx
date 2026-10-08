@@ -13,6 +13,11 @@ const tools = [
     href: '/admin/applicants',
     desc: 'Browse intern and full-time applications, open portfolios, and download CVs.',
   },
+  {
+    label: 'Blog Posts',
+    href: '/admin/blog',
+    desc: 'Upload HTML articles built in Claude, schedule them, and manage SEO for weareedt.com/blog.',
+  },
 ]
 
 export default function AdminHome() {

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'WayangMind | VR Mental Wellness Platform Malaysia | EDT',
+  title: 'WayangMind | VR Mental Wellness Platform Malaysia',
   description: 'WayangMind reimagines mindfulness with localized VR therapy, AI-personalized guided sessions, and culturally relevant content for Malaysian and SEA youth.',
 }
 

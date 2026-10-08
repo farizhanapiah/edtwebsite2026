@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Virtual Production Malaysia | ARVENA | Unreal Engine Live Events | EDT',
+  title: 'Virtual Production Malaysia | ARVENA | Unreal Engine Live Events',
   description:
     'Virtual production with Unreal Engine backgrounds for live streaming, branded content, and panel shows in Malaysia. No physical set needed — just ARVENA.',
 }

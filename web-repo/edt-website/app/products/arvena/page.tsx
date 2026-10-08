@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'ARVENA | Virtual Production Platform Malaysia | Unreal Engine | EDT',
+  title: 'ARVENA | Virtual Production Platform Malaysia | Unreal Engine',
   description: "ARVENA is EDT's proprietary virtual production platform. Replace physical sets with Unreal Engine environments for live streaming, branded content, and music video production.",
 }
 

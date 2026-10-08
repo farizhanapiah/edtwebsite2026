@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Projection Mapping Malaysia | Building & Stage Mapping | EDT',
+  title: 'Projection Mapping Malaysia | Building & Stage Mapping',
   description: 'Transform any surface into a canvas. EDT delivers projection mapping for buildings, stages, floors, and cultural landmarks across Malaysia and SEA.',
 }
 

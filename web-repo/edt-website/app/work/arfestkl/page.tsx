@@ -3,7 +3,7 @@ import Link from 'next/link'
 import YouTubeEmbed from '@/components/YouTubeEmbed'
 
 export const metadata: Metadata = {
-  title: 'ARFestKL Case Study | Downtown KL AR Playground | EDT',
+  title: 'ARFestKL Case Study | Downtown KL AR Playground',
   description:
     'How EDT transformed Downtown Kuala Lumpur into a 30-point AR playground — 52,417 AR impressions, 42 artists, and 35 artworks across the city centre.',
   alternates: {

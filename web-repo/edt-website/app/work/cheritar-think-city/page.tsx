@@ -3,7 +3,7 @@ import Link from 'next/link'
 import YouTubeEmbed from '@/components/YouTubeEmbed'
 
 export const metadata: Metadata = {
-  title: 'CheritAR × Think City | AR Heritage Case Study | EDT',
+  title: 'CheritAR × Think City | AR Heritage Case Study',
   description:
     "How EDT and Think City brought Kuala Lumpur's heritage buildings to life with AI-powered AR avatars, reaching tourists from 12+ countries.",
   alternates: {

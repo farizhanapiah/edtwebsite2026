@@ -3,7 +3,7 @@ import Link from 'next/link'
 import YouTubeEmbed from '@/components/YouTubeEmbed'
 
 export const metadata: Metadata = {
-  title: "AirAsia Founders' Gallery | Interactive Installation | EDT",
+  title: "AirAsia Founders' Gallery | Interactive Installation",
   description:
     "EDT built an interactive wall + AR + AI imagery installation for the AirAsia Founders' Gallery — bringing the airline's founding story to life.",
   alternates: {
