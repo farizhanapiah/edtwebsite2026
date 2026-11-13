@@ -140,13 +140,13 @@ export async function POST(request: NextRequest) {
     }
     for (const path of Object.values(newPaths)) {
       if (!path) continue
-      const dir = path.slice(0, path.lastIndexOf('/'))
-      const name = path.slice(path.lastIndexOf('/') + 1)
       if (!path.startsWith(`${id}/`)) {
         return NextResponse.json({ error: 'Invalid file path.' }, { status: 400 })
       }
-      const { data: list } = await admin.storage.from(BLOG_BUCKET).list(dir)
-      if (!list?.some((o) => o.name === name)) {
+      const { data: found } = await admin.storage
+        .from(BLOG_BUCKET)
+        .exists(path)
+      if (!found) {
         return NextResponse.json({ error: 'Upload not found. Please try again.' }, { status: 400 })
       }
     }

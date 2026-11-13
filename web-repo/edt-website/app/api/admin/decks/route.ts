@@ -32,7 +32,11 @@ export async function POST(request: NextRequest) {
 
   const title = String(body.title || '').trim()
   const clientName = String(body.client_name || '').trim()
-  const baseSlug = slugify(String(body.slug || '') || title)
+  // Leave room for the 13-char "-<token>" suffix so the final slug stays
+  // within slugify's 80-char cap. (Previously a long title produced an
+  // 85-char slug at sign time that got truncated to 80 at commit time, so
+  // commit looked in the wrong folder and reported "Upload not found".)
+  const baseSlug = slugify(String(body.slug || '') || title).slice(0, 67).replace(/-+$/, '')
 
   if (!title) {
     return NextResponse.json({ error: 'Title is required.' }, { status: 400 })
@@ -76,18 +80,21 @@ export async function POST(request: NextRequest) {
 
   // ---- Phase 2: commit ----
   if (body.phase === 'commit') {
-    // The client sends back the tokened slug from the sign phase as-is.
-    const slug = baseSlug
+    // The client sends back the tokened slug from the sign phase. Use it
+    // verbatim (do NOT re-slugify/truncate it) — it must match the folder
+    // the file was uploaded to.
+    const slug = String(body.slug || '').trim()
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*-[0-9a-f]{12}$/.test(slug)) {
+      return NextResponse.json({ error: 'Invalid upload reference.' }, { status: 400 })
+    }
     const filePath = `${slug}/index.html`
 
     // Confirm the file actually landed in storage before recording the row.
-    const { data: list } = await admin.storage.from(DECKS_BUCKET).list(slug)
-    const uploaded = list?.some((o) => o.name === 'index.html')
+    const { data: uploaded } = await admin.storage
+      .from(DECKS_BUCKET)
+      .exists(filePath)
     if (!uploaded) {
-      return NextResponse.json(
-        { error: 'Upload not found. Please try again.' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'Upload not found. Please try again.' }, { status: 400 })
     }
 
     const { error: insertError } = await admin.from(DECKS_TABLE).insert({
